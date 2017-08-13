@@ -10,12 +10,13 @@ SRC_URI="https://downloads.sourceforge.net/project/scidvspc/source/scid_vs_pc-4.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="sound"
 
 CDEPEND="
 		>=dev-lang/tcl-8.5
 		>=dev-lang/tk-8.5
 		!games-board/scid"
 DEPEND="${CDEPEND}"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+		sound? ( dev-tcltk/snack )"
 
