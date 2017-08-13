@@ -15,10 +15,10 @@ IUSE="sound"
 CDEPEND="
 		>=dev-lang/tcl-8.6
 		>=dev-lang/tk-8.6
-		!dev-tcltk/snack::gentoo"
+		!dev-tcltk/snack"
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
-		sound? ( dev-tcltk/snack::mushroom )"
+		sound? ( dev-tcltk/snack-scid )"
 
 src_configure() {
 # configure is not an autotools script
