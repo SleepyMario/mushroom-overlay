@@ -13,10 +13,21 @@ KEYWORDS="~amd64 ~x86"
 IUSE="sound"
 
 CDEPEND="
-		>=dev-lang/tcl-8.5
-		>=dev-lang/tk-8.5
-		!games-board/scid"
+		>=dev-lang/tcl-8.6
+		>=dev-lang/tk-8.6
+		!dev-tcltk/snack::gentoo"
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
-		sound? ( dev-tcltk/snack )"
+		sound? ( dev-tcltk/snack::mushroom )"
 
+src_configure() {
+# configure is not an autotools script
+			./configure \
+			BINDIR="/usr/local/bin/" \
+			SHAREDIR="/usr/share/${PN}" || die
+}
+
+# todo:
+# 1) 2x scidpgn  -- important
+# 2) snack flags -- not important 
+# 3) integrate stockfish -- not important
