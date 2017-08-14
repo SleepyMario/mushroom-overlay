@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils cmake-utils
 
-DESCRIPTION="A utility for mapping keyboard keys and mouse controls to a gamepad with fixes for gcc-6"
+DESCRIPTION="The Github version of Antimicro with fixes for gcc-6"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
 SRC_URI="https://github.com/AntiMicro/antimicro/archive/master.zip -> ${P}.zip"
 
@@ -14,14 +14,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="qt5 +sdl2 test"
 
 CDEPENDS="
-		dev-util/cmake
 		x11-libs/Xi
 "
 DEPENDS="${CDEPENDS}"
 RDEPEND="${DEPEND}
 		test? ( x11-libs/libXi ) 
 		sdl2? ( media-libs/libsdl2[X,joystick] )
-		!sdl2? ( media-libs/libsdl )
+		!sdl2? ( media-libs/libsdl[X,joystick] )
 	    qt5? ( 
 			dev-qt/qtcore:5  
 			x11-libs/libX11 
@@ -32,7 +31,13 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/antimicro-master
 
 src_configure() {
-				QT_SELECT=4 cmake-utils_src_configure
+				if use qt5 ; then
+					QT_SELECT=5 cmake-utils_src_configure
+				fi 
+
+				if ! use qt5 ; then
+					QT_SELECT=4 cmake-utils_src_configure 
+				fi
 }
 
 
