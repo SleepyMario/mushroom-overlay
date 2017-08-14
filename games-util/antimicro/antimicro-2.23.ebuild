@@ -35,9 +35,7 @@ src_configure() {
 			
 		if use qt5 ; then
 			QT_SELECT=5 cmake-utils_src_configure
-		fi 
-
-		if ! use qt5 ; then
+		else 
 			QT_SELECT=4 cmake-utils_src_configure 
 		fi
 }
