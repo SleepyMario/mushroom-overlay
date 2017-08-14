@@ -4,9 +4,9 @@
 EAPI=6
 inherit eutils cmake-utils
 
-DESCRIPTION="The Github version of Antimicro with fixes for gcc-6"
+DESCRIPTION="Antimicro with fixes for use with gcc-6"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
-SRC_URI="https://github.com/AntiMicro/antimicro/archive/master.zip -> ${P}.zip"
+SRC_URI="https://github.com/AntiMicro/antimicro/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -16,8 +16,7 @@ IUSE="qt5 +sdl2 test"
 CDEPENDS="
 		x11-libs/Xi
 "
-DEPENDS="${CDEPENDS}"
-RDEPEND="${DEPEND}
+RDEPEND="${CDEPEND}
 		test? ( x11-libs/libXi ) 
 		sdl2? ( media-libs/libsdl2[X,joystick] )
 		!sdl2? ( media-libs/libsdl[X,joystick] )
@@ -27,10 +26,16 @@ RDEPEND="${DEPEND}
 		)     
         !qt5? ( dev-qt/qtcore:4 ) 
 		"
+DEPEND="${RDEPENDS}"
+
 
 S=${WORKDIR}/antimicro-master
 
 src_configure() {
+				local mycmakeargs=(
+				-DUSE_SDL2="$(usex sdl2)"
+				)
+				
 				if use qt5 ; then
 					QT_SELECT=5 cmake-utils_src_configure
 				fi 
