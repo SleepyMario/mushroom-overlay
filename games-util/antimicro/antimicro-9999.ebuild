@@ -28,7 +28,6 @@ RDEPEND="${DEPEND}
 		)     
         !qt5? ( dev-qt/qtcore:4 ) 
 		"
-S=${WORKDIR}
 
 src_configure() {
 				QT_SELECT=4 cmake-utils_src_configure
