@@ -23,13 +23,11 @@ RDEPEND="${DEPEND}
 		stockfish? ( games-board/stockfish )
 		"
 
-{PN}="scid"
-
 src_configure() {
 # configure is not an autotools script
 			./configure \
 			BINDIR="/usr/local/bin/" \
-			SHAREDIR="/usr/local/share/${PN}" || die "Install Failed"  
+			SHAREDIR="/usr/local/share/scid" || die "Install Failed"  
 }
 
 # To-Do:
