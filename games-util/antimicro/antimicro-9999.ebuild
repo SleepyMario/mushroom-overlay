@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A utility for mapping keyboard keys and mouse controls to a gamepad with fixes for gcc-6"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
-SRC_URI="https://github.com/AntiMicro/antimicro/archive/master.zip -> ${P}.tar.gz"
+SRC_URI="https://github.com/AntiMicro/antimicro/archive/master.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 		"
 
 src_configure() {
-				QT_SELECT=5 cmake-utils_src_configure
+				QT_SELECT=4 cmake-utils_src_configure
 }
 
 
