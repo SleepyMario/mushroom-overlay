@@ -14,10 +14,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="qt5 +sdl2 test"
 
 CDEPEND="
-		x11-libs/Xi
+		x11-libs/libXi
 "
 RDEPEND="${CDEPEND}
-		test? ( x11-libs/libXi ) 
+		test? ( x11-libs/libXtst ) 
 		sdl2? ( media-libs/libsdl2[X,joystick] )
 		!sdl2? ( media-libs/libsdl[X,joystick] )
 	    qt5? ( 
