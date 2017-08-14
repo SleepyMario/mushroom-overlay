@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit eutils cmake-utils
 
 DESCRIPTION="A utility for mapping keyboard keys and mouse controls to a gamepad with fixes for gcc-6"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
