@@ -29,7 +29,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${RDEPENDS}"
 
 
-S=${WORKDIR}/${PV}
+S=${WORKDIR}/antimicro-${PV}
 
 src_configure() {
 				local mycmakeargs=(
