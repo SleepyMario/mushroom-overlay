@@ -33,12 +33,10 @@ S=${WORKDIR}/antimicro-master/
 src_configure() {
 				mkdir build &&  
 				cd build &&
-				cmake .. &&
-				make 		
+				cmake_utils_source_configure
 }
 
-src_configure() {
-				dodir /usr/local/bin
-				cp  "${S}/build/antimicro" "${D}" || die "Install Failed!"
+src_install () {
+				cmake_utils_src_install
 }
 
