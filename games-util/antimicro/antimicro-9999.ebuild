@@ -33,10 +33,10 @@ S=${WORKDIR}/antimicro-master/
 src_configure() {
 				mkdir build &&  
 				cd build &&
-				cmake_utils_source_configure
+				cmake-utils_source_configure
 }
 
 src_install () {
-				cmake_utils_src_install
+				cmake-utils_src_install
 }
 
