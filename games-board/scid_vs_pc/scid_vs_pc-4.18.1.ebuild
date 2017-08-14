@@ -26,7 +26,7 @@ src_configure() {
 # configure is not an autotools script
 			./configure \
 			BINDIR="/usr/local/bin/" \
-			SHAREDIR="/usr/local/share/${PN}" || die "Install Failed"  
+			SHAREDIR="/usr/local/share/${P}" || die "Install Failed"  
 }
 
 # To-Do:
