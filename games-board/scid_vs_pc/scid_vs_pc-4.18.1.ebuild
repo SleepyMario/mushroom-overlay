@@ -32,7 +32,7 @@ src_configure() {
 
 pkg_postinst() {
 		elog "The stockfish engine is located in /usr/bin and is called 'stockfish'"
-		elog "DO NOT INSTALL games-board/scid FROM PORTAGE AS IT WILL OVERWRITE THIS INSTALL!"
+		elog "!!DO NOT INSTALL 'games-board/scid' FROM PORTAGE AS IT WILL OVERWRITE THIS INSTALL!!"
 }
 
 # To-Do:
