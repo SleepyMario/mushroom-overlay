@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A fork of Shane's Chess Information Database, a powerful Chess Toolkit"
 HOMEPAGE="http://scidvspc.sourceforge.net"
-SRC_URI="https://downloads.sourceforge.net/project/scidvspc/source/scid_vs_pc-4.18.1.tgz"
+SRC_URI="https://downloads.sourceforge.net/project/scidvspc/source/scid_vs_pc-4.18.1.tgz -> scid.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,7 +26,8 @@ src_configure() {
 # configure is not an autotools script
 			./configure \
 			BINDIR="/usr/local/bin/" \
-			SHAREDIR="/usr/share/${PN}" || die "Install Failed" && 
-			ln -s /usr/bin/stockfish /usr/share/scid_vs_pc/stockfish
+			SHAREDIR="/usr/local/${PN}" || die "Install Failed"  
 }
 
+# To-Do:
+# 1) location of stockfish 
