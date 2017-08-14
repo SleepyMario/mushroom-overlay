@@ -33,8 +33,12 @@ S=${WORKDIR}/antimicro-master/
 src_configure() {
 				mkdir build &&  
 				cd build &&
-				cmake \
-				-DCMAKE_INSTALL_PREFIX=/usr .. &&
+				cmake .. &&
 				make && 
-				make install
 }
+
+src_install () {
+				into /usr/bin
+				dobin antimicro
+}
+
