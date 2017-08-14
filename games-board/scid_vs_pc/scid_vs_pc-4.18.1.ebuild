@@ -10,7 +10,7 @@ SRC_URI="https://downloads.sourceforge.net/project/scidvspc/source/scid_vs_pc-4.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="sound stockfish"
+IUSE="sound +stockfish"
 
 CDEPEND="
 		>=dev-lang/tcl-8.6
