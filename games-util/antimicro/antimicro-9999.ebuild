@@ -34,11 +34,11 @@ src_configure() {
 				mkdir build &&  
 				cd build &&
 				cmake .. &&
-				make && 
+				make 		
 }
 
-src_install () {
-				into /usr/bin
-				dobin antimicro
+src_configure() {
+				dodir /usr/local/bin
+				cp  "${S}/build/antimicro" "${D}" || die "Install Failed!"
 }
 
