@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils cmake-utils
+inherit cmake-utils
 
 DESCRIPTION="A recent Antimicro that works with gcc-6"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
@@ -28,21 +28,18 @@ RDEPEND="${CDEPEND}
 		"
 DEPEND="${RDEPEND}"
 
-
-S=${WORKDIR}/antimicro-${PV}
-
 src_configure() {
-				local mycmakeargs=(
-				-DUSE_SDL2="$(usex sdl2)"
-				)
-				
-				if use qt5 ; then
-					QT_SELECT=5 cmake-utils_src_configure
-				fi 
+		local mycmakeargs=(
+			-DUSE_SDL2="$(usex sdl2)"
+		)
+			
+		if use qt5 ; then
+			QT_SELECT=5 cmake-utils_src_configure
+		fi 
 
-				if ! use qt5 ; then
-					QT_SELECT=4 cmake-utils_src_configure 
-				fi
+		if ! use qt5 ; then
+			QT_SELECT=4 cmake-utils_src_configure 
+		fi
 }
 
 
