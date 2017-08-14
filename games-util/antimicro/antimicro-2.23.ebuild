@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils cmake-utils
 
-DESCRIPTION="Antimicro with fixes for use with gcc-6"
+DESCRIPTION="A recent Antimicro that works with gcc-6"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
 SRC_URI="https://github.com/AntiMicro/antimicro/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -29,7 +29,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${RDEPENDS}"
 
 
-S=${WORKDIR}/antimicro-master
+S=${WORKDIR}/${PV}
 
 src_configure() {
 				local mycmakeargs=(
