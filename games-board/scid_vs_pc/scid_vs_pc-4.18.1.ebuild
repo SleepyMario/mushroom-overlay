@@ -10,24 +10,23 @@ SRC_URI="https://downloads.sourceforge.net/project/scidvspc/source/scid_vs_pc-4.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="sound"
+IUSE="sound stockfish"
 
 CDEPEND="
 		>=dev-lang/tcl-8.6
 		>=dev-lang/tk-8.6
-		!dev-tcltk/snack"
+		!games-board/scid
+		"
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
-		sound? ( dev-tcltk/snack-scid )"
-
+		sound? ( =dev-tcltk/snack-2.2.10 )
+		stockfish? ( games-board/stockfish )
+		"
 src_configure() {
 # configure is not an autotools script
 			./configure \
 			BINDIR="/usr/local/bin/" \
-			SHAREDIR="/usr/share/${PN}" || die
+			SHAREDIR="/usr/share/${PN}" || die "Install Failed" && 
+			ln -s /usr/bin/stockfish /usr/share/scid_vs_pc/stockfish
 }
 
-# todo:
-# 1) 2x scidpgn  -- important
-# 2) snack flags -- not important 
-# 3) integrate stockfish -- not important
