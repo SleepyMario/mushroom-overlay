@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="qt5 +sdl2 test"
 
-CDEPENDS="
+CDEPEND="
 		x11-libs/Xi
 "
 RDEPEND="${CDEPEND}
@@ -26,7 +26,7 @@ RDEPEND="${CDEPEND}
 		)     
         !qt5? ( dev-qt/qtcore:4 ) 
 		"
-DEPEND="${RDEPENDS}"
+DEPEND="${RDEPEND}"
 
 
 S=${WORKDIR}/antimicro-${PV}
