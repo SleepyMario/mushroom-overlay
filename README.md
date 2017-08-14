@@ -3,6 +3,6 @@
 Hello, this is just another Gentoo Overlay. 
 Specialization will follow in a later stage :-)
 
-The scid_vs_pc ebuild is usable, but when installed next to the original scid (games-board/scid in portage) keep in mind that both binaries are called 'scid' and still will give problems when opened in that way. Have mercy, it will be fixed as soon as I can. 
+Do not attempt to install 'games-board/scid' from portage after installing 'games-board/scid_vs_pc' from this overlay, as it will overwrite the installation. 
 
-Antimicro has a fix to use it with gcc-6. 
+
