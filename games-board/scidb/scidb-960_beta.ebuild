@@ -26,7 +26,10 @@ CXX=
 
 src_configure() {
 		./configure \
-		--CFLAGS=-Wall \
-		--CXXFLAGS=-Wall -msse2
+		--CFLAGS=Wall \
+		--CXXFLAGS=Wall \
+		--CXXFLAGS=msse2 \
+		--C_DEBUG=g \
+		--CXX_DEBUT=g
 
 }
