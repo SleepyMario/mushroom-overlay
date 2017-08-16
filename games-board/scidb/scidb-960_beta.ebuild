@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A Chess Database inspired by scid but built from scratch"
 HOMEPAGE="http://http://scidb.sourceforge.net/index.html"
-SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-beta-code-r960.tar.gz 
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-beta-code-r960.tar.gz" 
 
 LICENSE="GPL-2"
 SLOT="0"
