@@ -10,7 +10,7 @@ SRC_URI="https://downloads.sourceforge.net/project/scidvspc/source/scid_vs_pc-4.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="sound +stockfish"
+IUSE="Xfcc sound +stockfish"
 
 CDEPEND="
 		>=dev-lang/tcl-8.6
@@ -19,7 +19,7 @@ CDEPEND="
 		"
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
-		dev-tcltk/tdom
+		Xfcc? dev-tcltk/tdom
 		sound? ( =dev-tcltk/snack-2.2.10 )
 		stockfish? ( games-board/stockfish )
 		"
