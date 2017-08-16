@@ -16,10 +16,10 @@ DEPEND="
 	dev-lang/tk
 	dev-lang/tcl
 	sys-libs/zlib
-	dev-libs/zziplib
 	dev-libs/expat
 	sys-libs/gdbm
 "
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/scidb-beta-code-r960
+
