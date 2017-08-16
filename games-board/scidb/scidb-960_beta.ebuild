@@ -23,3 +23,8 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/scidb-beta-code-r960
 
+scr_configure() {
+		./configure \
+		--gcc-version=5.4.0-r3
+}
+
