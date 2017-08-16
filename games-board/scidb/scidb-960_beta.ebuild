@@ -22,8 +22,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-beta-code-r960
+CXX=
 
 src_configure() {
 		./configure \
-		--gcc-version=clang 
+		--CFLAGS=-Wall \
+		--CXXFLAGS=-Wall -msse2
+
 }
