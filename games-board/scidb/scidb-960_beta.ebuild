@@ -23,3 +23,6 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/scidb-beta-code-r960
 
+src_configure() {
+		./configure 
+}
