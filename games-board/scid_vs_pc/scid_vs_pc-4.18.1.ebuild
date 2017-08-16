@@ -19,7 +19,7 @@ CDEPEND="
 		"
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
-		Xfcc? dev-tcltk/tdom
+		Xfcc? ( dev-tcltk/tdom )
 		sound? ( =dev-tcltk/snack-2.2.10 )
 		stockfish? ( games-board/stockfish )
 		"
