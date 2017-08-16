@@ -22,3 +22,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-beta-code-r960
+
+src_configure() {
+		./configure \
+		--gcc-version=clang 
+}
