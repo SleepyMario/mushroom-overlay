@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils
 
 DESCRIPTION="A Chess Database inspired by scid but built from scratch"
 HOMEPAGE="http://http://scidb.sourceforge.net/index.html"
@@ -24,6 +23,3 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/scidb-beta-code-r960
 
-src_configure() {
-		./configure 
-}
