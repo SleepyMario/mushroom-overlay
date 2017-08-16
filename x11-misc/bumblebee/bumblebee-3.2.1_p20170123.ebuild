@@ -18,7 +18,7 @@ else
 	S="${WORKDIR}/Bumblebee-${COMMIT}"
 fi
 
-DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
+DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets, for nouveau only"
 HOMEPAGE="https://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
 
 SLOT="0"
