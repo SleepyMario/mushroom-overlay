@@ -5,11 +5,11 @@ EAPI=6
 
 DESCRIPTION="A Chess Database inspired by scid but built from scratch"
 HOMEPAGE="http://http://scidb.sourceforge.net/index.html"
-SRC_URI="https://sourceforge.net/projects/scidb/files/${PN}-beta-code-r1431.tgz/download"
+SRC_URI="https://sourceforge.net/projects/scidb/files/${PN}-beta-code-r1431.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -22,4 +22,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-
+S=${WORKDIR}/${PN}-beta-code-r1431
