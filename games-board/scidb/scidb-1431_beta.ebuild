@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A Chess Database inspired by scid but built from scratch"
 HOMEPAGE="http://http://scidb.sourceforge.net/index.html"
-SRC_URI="https://downloads.sourceforge.net/project/${PN}-beta-code-r960.tar.gz"
+SRC_URI="https://sourceforge.net/projects/scidb/files/${PN}-beta-code-r1431.tgz/download"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -13,13 +13,14 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
-	dev-lang/tk
-	dev-lang/tcl
+	>=dev-lang/tk-8.5
+	>=dev-lang/tcl-8.5
 	sys-libs/zlib
+	dev-libs/zziplib
 	dev-libs/expat
 	sys-libs/gdbm
 "
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}-beta-code-r960
+S=${WORKDIR}/${PN}-beta-code-r1431
 
