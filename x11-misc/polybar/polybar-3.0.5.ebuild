@@ -14,7 +14,7 @@ EGIT_COMMIT="${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+alsa +i3wm +mpd github +network"
 
 RDEPEND="
 		x11-libs/libxcb
@@ -22,18 +22,23 @@ RDEPEND="
 		x11-proto/xcb-proto
 		x11-libs/xcb-util-wm
 		x11-libs/xcb-util-image
-		media-libs/alsa-lib 
-        dev-libs/jsoncpp 
-		media-libs/libmpdclient 
-		net-misc/curl 
-		net-wireless/wireless-tools 
+		
+		alsa? ( media-libs/alsa-lib )
+        i3wm? ( dev-libs/jsoncpp )
+		mpd? ( media-libs/libmpdclient )
+		github? ( net-misc/curl )
+		network? ( net-wireless/wireless-tools )
 "
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	local mycmakeargs=(
+		-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
+		-DENABLE_ALSA="$(usex alsa)"
+		-DENABLE_MPD="$(usex mpd)"
+		-DENABLE_NETWORK="$(usex network)"
+		-DENABLE_I3="$(usex i3wm)"
+		-DENABLE_CURL="$(usex github)"
+	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
 }
