@@ -14,7 +14,7 @@ EGIT_COMMIT="${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+alsa +i3wm +mpd github +network"
+IUSE="+alsa +i3wm mpd github +network"
 
 RDEPEND="
 		x11-libs/libxcb
