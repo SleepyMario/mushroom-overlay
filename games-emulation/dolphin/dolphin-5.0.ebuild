@@ -87,7 +87,7 @@ pkg_pretend() {
 
 src_prepare() {
 	# add patch
-	eapply_user 
+	epatch_user 
 
 	# Remove automatic dependencies to prevent building without flags enabled.
 	if use !alsa; then
