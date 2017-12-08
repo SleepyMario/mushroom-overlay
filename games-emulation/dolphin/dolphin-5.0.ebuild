@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
 PLOCALES="ar ca cs da_DK de el en es fa fr hr hu it ja ko ms_MY nb nl pl pt pt_BR ro_RO ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
@@ -86,8 +86,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	# add patch
-	epatch_user 
+	epatch ${FILESDIR}/${PN}-5.0-gcc-6.2-build-fix.patch
 
 	# Remove automatic dependencies to prevent building without flags enabled.
 	if use !alsa; then
@@ -138,6 +137,8 @@ src_prepare() {
 
 	l10n_find_plocales_changes "Languages/po/" "" '.po'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
