@@ -26,5 +26,5 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${PN}-beta-code-r1431
 
 src_configure() {
-	./configure --gcc-version=6.4.0
+	./configure --gcc-version=7.2.0
 }
