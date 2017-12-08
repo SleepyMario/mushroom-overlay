@@ -86,7 +86,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch ${FILESDIR}/${PN}-5.0-gcc-6.2-build-fix.patch
+	epatch /etc/portage/patches/games-emulation/dolphin-5.0/${PN}-5.0-gcc-6.2-build-fix.patch
 
 	# Remove automatic dependencies to prevent building without flags enabled.
 	if use !alsa; then
