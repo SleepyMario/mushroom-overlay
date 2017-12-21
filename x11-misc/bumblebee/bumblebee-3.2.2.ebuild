@@ -51,7 +51,7 @@ PDEPEND="
         )
 "
 
-REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
+REQUIRED_USE="video_cards_nouveau"
 
 pkg_setup() {
         enewgroup bumblebee
