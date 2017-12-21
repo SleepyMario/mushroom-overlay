@@ -24,7 +24,7 @@ HOMEPAGE="https://bumblebee-project.org https://github.com/Bumblebee-Project/Bum
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="+bbswitch +video_cards_nouveau -video_cards_nvidia"
+IUSE="+bbswitch +video_cards_nouveau"
 
 COMMON_DEPEND="
         dev-libs/glib:2
@@ -63,20 +63,6 @@ src_prepare() {
 }
 
 src_configure() {
-        if use video_cards_nvidia ; then
-                # Get paths to GL libs for all ABIs
-                local i nvlib=""
-                for i in  $(get_all_libdirs) ; do
-                        nvlib="${nvlib}:/usr/${i}/opengl/nvidia/lib"
-                done
-
-                local nvpref="/usr/$(get_libdir)/opengl/nvidia"
-                local xorgpref="/usr/$(get_libdir)/xorg/modules"
-                ECONF_PARAMS="CONF_DRIVER=nvidia CONF_DRIVER_MODULE_NVIDIA=nvidia \
-                        CONF_LDPATH_NVIDIA=${nvlib#:} \
-                        CONF_MODPATH_NVIDIA=${nvpref}/lib,${nvpref}/extensions,${xorgpref}/drivers,${xorgpref}"
-        fi
-
         econf \
                 ${ECONF_PARAMS}
 }
