@@ -86,8 +86,7 @@ DEPEND="
 	dev-lang/swig
 "
 
-S="${WORKDIR}/${MY_P}"
-FILESDIR="/etc/portage/patches/${P}"
+#S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/cmake-fribidi.patch"
