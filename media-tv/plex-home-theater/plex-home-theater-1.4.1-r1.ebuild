@@ -90,7 +90,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 #	epatch "${FILESDIR}/cmake-fribidi.patch"
-	epatch "${FILESDIR}/cmake-dbus.patch"
+#	epatch "${FILESDIR}/cmake-dbus.patch"
 	epatch "${FILESDIR}/libcec.patch"
 	use pulseaudio || epatch "${FILESDIR}/nopulse.patch"
 
