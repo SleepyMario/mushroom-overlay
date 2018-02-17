@@ -87,6 +87,7 @@ DEPEND="
 "
 
 S="${WORKDIR}/${MY_P}"
+FILESDIR="/etc/portage/patches/${P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/cmake-fribidi.patch"
