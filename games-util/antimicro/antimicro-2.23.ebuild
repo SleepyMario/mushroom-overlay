@@ -25,8 +25,9 @@ RDEPEND="${CDEPEND}
 		!sdl2? ( media-libs/libsdl[X,joystick] )
 	    qt5? ( 
 			dev-qt/qtcore:5  
+			dev-qt/qttranslations:5
 			x11-libs/libX11 
-		)     
+					)     
         !qt5? ( dev-qt/qtcore:4 ) 
 		"
 DEPEND="${RDEPEND}"
