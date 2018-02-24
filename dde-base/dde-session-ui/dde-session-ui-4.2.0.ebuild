@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="systemd"
 
 RDEPEND="x11-libs/gsettings-qt
 		 x11-misc/lightdm[qt5]
@@ -36,7 +36,9 @@ RDEPEND="x11-libs/gsettings-qt
 		 dde-base/dde-daemon
 		 >=dde-base/deepin-desktop-schemas-2.91.2
 		 dde-base/startdde
+		 systemd? ( sys-apps/systemd[policykit] )
 		"
+
 DEPEND="${RDEPEND}
 		>=dde-base/dtkwidget-2.0.0:=
 		>=dde-base/deepin-gettext-tools-1.0.6
