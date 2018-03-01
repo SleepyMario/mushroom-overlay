@@ -14,12 +14,11 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-settings-daemon"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+colord +cups debug input_devices_wacom +openrc-force networkmanager policykit smartcard test +udev wayland"
+IUSE="+colord +cups debug input_devices_wacom -openrc-force networkmanager policykit smartcard test +udev wayland"
 REQUIRED_USE="
 	input_devices_wacom? ( udev )
 	smartcard? ( udev )
 	wayland? ( udev )
-	openrc-force? ( !sys-apps/systemd )
 "
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
@@ -46,12 +45,10 @@ COMMON_DEPEND="
 	x11-libs/libXtst
 	x11-libs/libXxf86misc
 	x11-misc/xkeyboard-config
-
 	>=app-misc/geoclue-2.3.1:2.0
 	>=dev-libs/libgweather-3.9.5:2=
 	>=sci-geosciences/geocode-glib-3.10
 	>=sys-auth/polkit-0.103
-
 	colord? (
 		>=media-libs/lcms-2.2:2
 		>=x11-misc/colord-1.0.2:= )
@@ -65,17 +62,18 @@ COMMON_DEPEND="
 	smartcard? ( >=dev-libs/nss-3.11.2 )
 	udev? ( virtual/libgudev:= )
 	wayland? ( dev-libs/wayland )
+	openrc-force? ( !sys-apps/systemd)
 "
 # Themes needed by g-s-d, gnome-shell, gtk+:3 apps to work properly
 # <gnome-color-manager-3.1.1 has file collisions with g-s-d-3.1.x
 # <gnome-power-manager-3.1.3 has file collisions with g-s-d-3.1.x
 # systemd needed for power and session management, bug #464944
 RDEPEND="${COMMON_DEPEND}
-#	gnome-base/dconf
-#	!<gnome-base/gnome-control-center-2.22
-#	!<gnome-extra/gnome-color-manager-3.1.1
-#	!<gnome-extra/gnome-power-manager-3.1.3
-#	!<gnome-base/gnome-session-3.23.2
+	gnome-base/dconf
+	!<gnome-base/gnome-control-center-2.22
+	!<gnome-extra/gnome-color-manager-3.1.1
+	!<gnome-extra/gnome-power-manager-3.1.3
+	!<gnome-base/gnome-session-3.23.2
 "
 # xproto-7.0.15 needed for power plugin
 DEPEND="${COMMON_DEPEND}
