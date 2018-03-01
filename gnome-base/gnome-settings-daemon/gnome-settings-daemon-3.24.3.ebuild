@@ -19,7 +19,6 @@ REQUIRED_USE="
 	input_devices_wacom? ( udev )
 	smartcard? ( udev )
 	wayland? ( udev )
-	openrc-force? ( !sys-apps/systemd )
 "
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
@@ -63,6 +62,7 @@ COMMON_DEPEND="
 	smartcard? ( >=dev-libs/nss-3.11.2 )
 	udev? ( virtual/libgudev:= )
 	wayland? ( dev-libs/wayland )
+	openrc-force? ( !sys-apps/systemd )
 "
 # Themes needed by g-s-d, gnome-shell, gtk+:3 apps to work properly
 # <gnome-color-manager-3.1.1 has file collisions with g-s-d-3.1.x
