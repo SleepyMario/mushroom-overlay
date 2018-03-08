@@ -20,8 +20,7 @@ RDEPEND="${CDEPEND}
 		test? ( x11-libs/libXtst ) 
 		sdl2? ( 
 			media-libs/libsdl2[X,joystick] 
-			media-libs/libsdl2
-#			!>=media-libs/libsdl2-2.0.6 
+			!>=media-libs/libsdl2-2.0.6 
 		)
 		!sdl2? ( media-libs/libsdl[X,joystick] )
 	    qt5? ( 
