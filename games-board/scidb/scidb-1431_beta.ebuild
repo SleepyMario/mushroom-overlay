@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit flag-o-matic
 
 DESCRIPTION="A Chess Database inspired by scid but built from scratch"
 HOMEPAGE="http://http://scidb.sourceforge.net/index.html"
@@ -23,11 +24,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-beta-code-r1431
+strip-flags
 
 src_configure() {
 	./configure 
 }
 
-src_compile {
-	emake make 
-}
