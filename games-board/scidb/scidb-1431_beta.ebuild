@@ -20,12 +20,11 @@ DEPEND="
 	dev-libs/zziplib
 	dev-libs/expat
 	sys-libs/gdbm
- 	sys-devel/clang	
 "
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-beta-code-r1431
 
 src_configure() {
-	./configure --gcc-version=clang
+	./configure 
 }
