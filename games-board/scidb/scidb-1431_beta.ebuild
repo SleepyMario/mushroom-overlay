@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit emake
 
 DESCRIPTION="A Chess Database inspired by scid but built from scratch"
 HOMEPAGE="http://http://scidb.sourceforge.net/index.html"
