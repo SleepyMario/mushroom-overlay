@@ -25,6 +25,10 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${PN}-beta-code-r1431
 
 src_configure() {
-	./configure 
+	./configure \
+		--prefix=/usr \
+		--exec-prefix=/usr \
+		--enginesdir=/usr/bin \
+		--destdir=/$pkgdir
 }
 
