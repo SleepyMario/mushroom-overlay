@@ -8,14 +8,6 @@ inherit qmake-utils
 DESCRIPTION="XCB Qt5 platform plugin for DDE"
 HOMEPAGE="https://github.com/linuxdeepin/qt5dxcb-plugin"
 
-if [[ ${PV} = *9999* ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/linuxdeepin/${PN}.git"
-else
-	SRC_URI="https://github.com/linuxdeepin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
@@ -39,11 +31,3 @@ RDEPEND="
 DEPEND="${RDEPEND}
 		"
 
-src_prepare() {
-	QT_SELECT=qt5 eqmake5 ${PN}.pro
-	default
-}
-
-src_install() {
-#	emake INSTALL_ROOT=${D} install
-}
