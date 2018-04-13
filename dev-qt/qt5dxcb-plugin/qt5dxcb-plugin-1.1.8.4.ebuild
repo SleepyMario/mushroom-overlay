@@ -1,16 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
-inherit qmake-utils
 
-DESCRIPTION="XCB Qt5 platform plugin for DDE"
-HOMEPAGE="https://github.com/linuxdeepin/qt5dxcb-plugin"
+DESCRIPTION="Total uglyness!"
 
-LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -28,6 +23,3 @@ RDEPEND="
 	x11-libs/xcb-util-keysyms
 	!<=dde-base/dde-qt5integration-0.2.7
 	"
-DEPEND="${RDEPEND}
-		"
-
