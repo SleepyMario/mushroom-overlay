@@ -16,7 +16,7 @@ DEPEND="
     dev-util/bazel
     >=media-libs/libsdl2-2.0.5
     media-libs/sdl2-mixer
-    media-libs/sdl2-media
+    media-libs/sdl2-image
 "
 RDEPEND="${DEPEND}"
 
