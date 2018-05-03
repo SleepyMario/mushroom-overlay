@@ -9,7 +9,7 @@ SRC_URI="https://github.com/bentglasstube/ld41/archive/v${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
@@ -20,7 +20,14 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"
+
 src_compile() {
 	bazel build :${PN}
+#	mv ${S}/${P} /usr/bin/${PN}
 }
 
+src_install() {
+	addwrite /usr/bin #ugly solution to sandbox violation
+	mv ${S}/${P} /usr/bin/${PN}
+}
