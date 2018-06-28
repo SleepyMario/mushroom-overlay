@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+brasero +eog +file-roller +gedit +gnome-system-monitor +gnome-screenshot +gnome-terminal +qpdfview"
+IUSE="+brasero +eog +file-roller +gedit +gnome-system-monitor +gnome-screenshot +gnome-terminal +libreoffice +qpdfview"
 
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}
 		gnome-screenshot? ( media-gfx/gnome-screenshot )
 		gnome-system-monitor ( gnome-extra/gnome-system-monitor )
 		gnome-terminal? ( x11-terms/gnome-terminal[-nautilus,-gnome-shell] )
+		libreoffice? ( app-office/libreoffice )
 		qpdfview? ( app-text/qpdfview[qt5] )
 		gnome-extra/cinnamon
 		x11-libs/gtk+extra
