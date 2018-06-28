@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}
 		file-roller? ( app-arch/file-roller )
 		gedit? ( app-editors/gedit )
 		gnome-screenshot? ( media-gfx/gnome-screenshot )
-		gnome-system-monitor ( gnome-extra/gnome-system-monitor )
+		gnome-system-monitor? ( gnome-extra/gnome-system-monitor )
 		gnome-terminal? ( x11-terms/gnome-terminal[-nautilus,-gnome-shell] )
 		libreoffice? ( app-office/libreoffice )
 		qpdfview? ( app-text/qpdfview[qt5] )
