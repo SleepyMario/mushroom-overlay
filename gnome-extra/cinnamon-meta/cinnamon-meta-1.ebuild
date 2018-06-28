@@ -16,7 +16,7 @@ DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
 		brasero? ( app-cdr/brasero )
 		eog? ( media-gfx/eog )
-		fileroller? ( app-arch/fileroller )
+		file-roller? ( app-arch/file-roller )
 		gedit? ( app-editors/gedit )
 		gnome-screenshot? ( media-gfx/gnome-screenshot )
 		gnome-system-monitor ( gnome-extra/gnome-system-monitor )
