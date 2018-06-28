@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 		gnome-system-monitor? ( gnome-extra/gnome-system-monitor )
 		gnome-terminal? ( x11-terms/gnome-terminal[-nautilus,-gnome-shell] )
 		libreoffice? ( app-office/libreoffice )
-		qpdfview? ( app-text/qpdfview[qt5] )
+		qpdfview? ( app-text/qpdfview )
 		gnome-extra/cinnamon
 		x11-libs/gtk+extra
 "
