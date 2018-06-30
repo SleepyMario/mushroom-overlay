@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="A meta ebuild for chess-related ebuilds."
+DESCRIPTION="A meta ebuild for cinnamon + extra useful ebuilds."
 HOMEPAGE=""
 SRC_URI=""
 
