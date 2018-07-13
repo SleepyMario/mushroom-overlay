@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 IUSE="+brasero +eog +file-roller +gedit +gnome-system-monitor +gnome-screenshot +gnome-terminal +libreoffice +qpdfview"
 
 DEPEND="${CDEPEND}"
