@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+btrfs +cronie +efi +firmware +intel-microcode +networkmanager +openrc +sensors +zsh"
+IUSE="X +btrfs +cronie +efi +firmware +intel-microcode +lightdm +networkmanager +openrc +sensors +systemrescuecd-x86 +zsh"
 
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}
 		app-portage/repoman
 		app-text/wgetpaste
 		net-fs/nfs-utils
+		net-misc/axel
 		sys-apps/usbutils
 		sys-apps/mlocate
 		sys-boot/grub
@@ -37,10 +38,16 @@ RDEPEND="${DEPEND}
 		firmware? ( sys-kernel/linux-firmware )
 		intel-microcode? ( sys-firmware/intel-microcode 
 						   sys-apps/iucode_tool )
+		lightdm? ( x11-misc/lightdm 
+                   x11-misc/lightdm-settings
+                   x11-misc/lightdm-slick-greeter )
 		networkmanager? ( net-misc/networkmanager )
 		openrc? ( sys-boot/plymouth-openrc-plugin )
+		systemrescuecd-x86? ( app-admin/systemrescuecd-x86 )
 		sensors? ( app-admin/hddtemp
 				   sys-apps/lm_sensors )
 		zsh? ( app-doc/zsh-lovers
-			   app-shells/zsh-completions )
+			   app-shells/zsh-completions 
+			   )
+		X? ( x11-base/xorg-server )
 		"

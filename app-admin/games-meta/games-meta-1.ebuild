@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="antimicro +dolphin +dosbox +fceux +mednafen +mupen64plus +openra +qjoypad +steam +supermariowar +supertuxkart"
+IUSE="antimicro +dolphin +dosbox +fceux +lutris +mednafen +mupen64plus +openra +qjoypad +steam +supermariowar +supertuxkart"
 
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
@@ -20,6 +20,7 @@ RDEPEND="${DEPEND}
 		dolphin? ( games-emulation/dolphin )
 		dosbox? ( games-emulation/dosbox )
 		fceux? ( games-emulation/fceux )
+		lutris? ( games-util/lutris )
 		mednafen? ( games-emulation/mednafen )
 		mupen64plus? ( games-emulation/mupen64plus )
 		openra? ( games-strategy/openra )
