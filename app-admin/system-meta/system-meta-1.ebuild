@@ -10,7 +10,7 @@ SRC_URI=""
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+btrfs +cronie +efi +firmware +luks +intel-microcode +networkmanager +openrc +sensors +zsh"
+IUSE="+btrfs +cronie +efi +firmware +intel-microcode +networkmanager +openrc +sensors +zsh"
 
 DEPEND="${CDEPEND}"
 RDEPEND="${DEPEND}
@@ -37,7 +37,6 @@ RDEPEND="${DEPEND}
 		firmware? ( sys-kernel/linux-firmware )
 		intel-microcode? ( sys-firmware/intel-microcode 
 						   sys-apps/iucode_tool )
-		luks? ( sys-fs/cryptsetup )
 		networkmanager? ( net-misc/networkmanager )
 		openrc? ( sys-boot/plymouth-openrc-plugin )
 		sensors? ( app-admin/hddtemp
