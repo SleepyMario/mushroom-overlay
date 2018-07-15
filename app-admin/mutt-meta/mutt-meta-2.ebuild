@@ -21,5 +21,5 @@ RDEPEND="${DEPEND}
 		media-gfx/fim
 		net-mail/offlineimap
 		www-client/w3m
-		notmuch? ( net-client/notmuch )
+		notmuch? ( net-mail/notmuch )
 		"
