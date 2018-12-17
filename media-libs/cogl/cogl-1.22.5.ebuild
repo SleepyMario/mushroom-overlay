@@ -50,8 +50,8 @@ RDEPEND="${COMMON_DEPEND}
 	!<media-libs/clutter-1.7
 "
 DEPEND="${COMMON_DEPEND}
-	>=sys-devel/automake:1.11
-	<=sys-devel/automake:1.15
+	>=sys-devel/automake-1.11
+	<=sys-devel/automake-1.16
 	>=dev-util/gtk-doc-am-1.13
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig

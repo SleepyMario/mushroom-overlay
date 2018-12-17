@@ -6,11 +6,11 @@ EAPI=7
 inherit unpacker
 
 SUPER_PN='amdgpu-pro'
-MY_PV=$(ver_rs 2 '-')
+#MY_PV=$(ver_rs 2 '-')
 
 DESCRIPTION="Proprietary OpenCL implementation for AMD GPUs"
 HOMEPAGE="https://support.amd.com/en-us/kb-articles/Pages/Radeon-Software-for-Linux-Release-Notes.aspx"
-SRC_URI="/home/ashwin/Downloads/${SUPER_PN}-${MY_PV}.tar.xz"
+SRC_URI="https://www.sleepymario.com/all/gentoo/distfile-server/distfiles/${SUPER_PN}-${PV}.tar.xz"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
@@ -23,7 +23,7 @@ RDEPEND="dev-libs/ocl-icd"
 
 QA_PREBUILT="/opt/${SUPER_PN}/lib*/*"
 
-S="${WORKDIR}/${SUPER_PN}-${MY_PV}"
+S="${WORKDIR}/${SUPER_PN}-18.20-684755-ubuntu-16.04"
 
 #pkg_nofetch() {
 #	local pkgver=$(ver_cut 1-2)
@@ -36,7 +36,7 @@ src_unpack() {
 	default
 
 	cd "${S}" || die
-	unpack_deb opencl-orca-amdgpu-pro-icd_${MY_PV}_amd64.deb
+	unpack_deb opencl-orca-amdgpu-pro-icd_${PV}_amd64.deb
 }
 
 src_install() {

@@ -1,1 +1,2 @@
-amd64 no-multilib-hardened-desktop dev
+amd64 default/linux/amd64/17.0/desktop/no-multilib dev
+amd64 default/linux/amd64/17.0/desktop/no-multilib/hardened dev

@@ -10,7 +10,7 @@ SUPER_PN='amdgpu-pro'
 
 DESCRIPTION="Proprietary OpenCL implementation for AMD GPUs"
 HOMEPAGE="https://support.amd.com/en-us/kb-articles/Pages/Radeon-Software-for-Linux-Release-Notes.aspx"
-SRC_URI="/home/ashwin/Downloads/${SUPER_PN}-${PV}.tar.xz"
+SRC_URI="/home/ashwin/Downloads/${SUPER_PN}-${PV}.tar"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
@@ -23,7 +23,7 @@ RDEPEND="dev-libs/ocl-icd"
 
 QA_PREBUILT="/opt/${SUPER_PN}/lib*/*"
 
-S="${WORKDIR}/${SUPER_PN}-${PV}"
+S="${WORKDIR}/${SUPER_PN}-18.20-606296"
 
 #pkg_nofetch() {
 #	local pkgver=$(ver_cut 1-2)
