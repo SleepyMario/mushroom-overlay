@@ -1,3 +1,5 @@
 amd64 default/linux/amd64/17.0/desktop/no-multilib dev
 amd64 default/linux/amd64/17.0/desktop/no-multilib/hardened dev
+amd64 default/linux/amd64/17.0/desktop/gnome/no-multilib dev
+amd64 default/linux/amd64/17.0/desktop/gnome/systemd/no-multilib dev
 amd64 default/linux/amd64/17.0/desktop/plasma/no-multilib dev
