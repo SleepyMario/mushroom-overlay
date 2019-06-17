@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ChatGameFontificator (bin)
+Exec=/usr/local/bin/chatgamefontificator-bin
+Icon=chatgamefontificator
+Terminal=false
+Type=Application
+Categories=Application;Network;
+Keywords=twitch;chat;
