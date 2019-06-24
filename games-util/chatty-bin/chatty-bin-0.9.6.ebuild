@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg-utils
+
 DESCRIPTION="Chat software specifically made for Twitch, in the spirit of a classic IRC Client."
 HOMEPAGE="https://chatty.github.io/"
 SRC_URI="https://github.com/chatty/chatty/releases/download/v0.9.6/Chatty_0.9.6.zip"
@@ -18,7 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-S=/var/tmp/portage/games-util/chatty-bin-0.9.6/work
+S=${WORKDIR}
 
 src_install () {
 	cp ${S}/Chatty.jar /usr/bin/${PN}.jar || die
@@ -28,14 +30,14 @@ src_install () {
 	}
 
 pkg_postinst() {
-    xdg_icon_cache_update
-    xdg_mimeinfo_database_update
-    xdg_desktop_database_update
-    }
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	}
 
 pkg_postrm() {
-    xdg_icon_cache_update
-    xdg_mimeinfo_database_update
-    xdg_desktop_database_update
-    }
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	}
 

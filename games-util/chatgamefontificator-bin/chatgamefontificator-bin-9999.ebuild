@@ -20,7 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-S=/var/tmp/portage/games-util/chatgamefontificator-bin-9999/distdir
+S=${DISTDIR}
 
 src_install() {
 	cp ${S}/ChatGameFontificator.jar /usr/bin/${PN}.jar || die
