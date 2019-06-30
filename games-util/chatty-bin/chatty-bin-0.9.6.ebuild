@@ -23,6 +23,9 @@ BDEPEND=""
 S=${WORKDIR}
 
 src_install () {
+	addwrite /usr/bin # ugly workaround, fix someday
+	addwrite /usr/local/bin/ # ugly workaround, fix someday
+	addwrite /usr/share/applications # ugly workaround, fix someday
 	cp ${S}/Chatty.jar /usr/bin/${PN}.jar || die
 	cp ${FILESDIR}/${PN} /usr/local/bin/${PN}
 	cp ${FILESDIR}/${PN}.desktop /usr/share/applications/${PN}.desktop

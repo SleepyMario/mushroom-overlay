@@ -23,6 +23,7 @@ BDEPEND=""
 S=${WORKDIR}
 
 src_install() {
+	addwrite /usr/share/fonts/
 	mkdir -p /usr/share/fonts/mathilde
 	cp ${S}/${PN}.otf /usr/share/fonts/mathilde/${PN}.otf || die
 	cp ${S}/${PN}-ttf.ttf /usr/share/fonts/mathilde/${PN}.ttf || die

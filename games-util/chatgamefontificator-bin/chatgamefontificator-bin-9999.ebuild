@@ -23,6 +23,9 @@ BDEPEND=""
 S=${DISTDIR}
 
 src_install() {
+	addwrite /usr/bin/
+	addwrite /usr/local/bin/
+	addwrite /usr/share/applications # 3 ugly workarounds, fix sometime
 	cp ${S}/ChatGameFontificator.jar /usr/bin/${PN}.jar || die
 	cp ${FILESDIR}/${PN} /usr/local/bin/${PN}
 	cp ${FILESDIR}/${PN}.desktop /usr/share/applications/${PN}.desktop
