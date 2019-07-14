@@ -9,7 +9,7 @@ DESCRIPTION="A Twitch chat display that uses the fonts of various video games."
 HOMEPAGE="https://chatty.github.io/"
 SRC_URI="https://github.com/GlitchCog/ChatGameFontificator/raw/master/jar/ChatGameFontificator.jar"
 
-LICENSE="GPL-3"
+LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="**"
 IUSE=""
