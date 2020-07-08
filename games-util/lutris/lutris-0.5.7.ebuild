@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 
 inherit distutils-r1 virtualx xdg
@@ -23,20 +23,22 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
+RESTRICT="!test? ( test )"
+
 BDEPEND="
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 RDEPEND="
 	app-arch/cabextract
 	app-arch/p7zip
-	app-arch/unrar
 	app-arch/unzip
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/python-evdev[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	gnome-base/gnome-desktop[introspection]
+	gnome-base/gnome-desktop:3[introspection]
 	media-sound/fluid-soundfont
 	net-libs/libsoup
 	net-libs/webkit-gtk:4[introspection]
@@ -53,7 +55,7 @@ python_install_all() {
 }
 
 python_test() {
-	virtx nosetests -v || die
+	virtx nosetests -v
 }
 
 pkg_preinst() {
