@@ -57,6 +57,10 @@ RDEPEND="
 	x11-libs/libnotify
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.7-copy_paste_fix.patch"
+)
+
 python_install_all() {
 	local DOCS=( AUTHORS README.rst docs/installers.rst )
 	distutils-r1_python_install_all
