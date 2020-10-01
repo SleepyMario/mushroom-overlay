@@ -7,13 +7,12 @@ DESCRIPTION=""Mathilde" is a handwritten, cursive/print hybrid typeface that inc
 HOMEPAGE="https://www.dafont.com/mathilde.font"
 SRC_URI="
 		https://dl.dafont.com/dl/?f=mathilde -> mathilde.zip
-		http://leeviathan.com/wp-content/uploads/mathilde-ttf.zip
 		"
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="otf ttf"
+IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -26,5 +25,4 @@ src_install() {
 	addwrite /usr/share/fonts/
 	mkdir -p /usr/share/fonts/mathilde
 	cp ${S}/${PN}.otf /usr/share/fonts/mathilde/${PN}.otf || die
-	cp ${S}/${PN}-ttf.ttf /usr/share/fonts/mathilde/${PN}.ttf || die
 	}
