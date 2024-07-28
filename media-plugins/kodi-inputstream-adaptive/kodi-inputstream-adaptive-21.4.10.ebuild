@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 IUSE="test"
 
 PATCHES=(
-#	"${FILESDIR}"/${P}-gcc-13-fix.patch # Bug 899754
+	"${FILESDIR}"/${P}-gcc-13-fix.patch # Bug 899754
 )
 
 COMMON_DEPEND="
