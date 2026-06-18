@@ -7,7 +7,6 @@ EAPI=8
 DESCRIPTION="OpenPGP key for Sleepy Mario (mushroom overlay signing)"
 HOMEPAGE="https://github.com/SleepyMario/mushroom-overlay"
 SRC_URI="https://raw.githubusercontent.com/SleepyMario/mushroom-overlay/main/keys/sleepymario.asc -> sleepymario.asc"
-
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 x86"
