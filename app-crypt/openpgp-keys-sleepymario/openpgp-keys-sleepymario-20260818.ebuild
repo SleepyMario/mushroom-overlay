@@ -13,8 +13,19 @@ KEYWORDS="amd64 x86"
 
 RESTRICT="mirror strip binchecks test"
 
-src_unpack() { :; }
-src_prepare() { :; }
+# Tell Portage: no source dir, just WORKDIR
+S="${WORKDIR}"
+
+src_unpack() {
+	# Copy the fetched key into WORKDIR
+	cp "${DISTDIR}/sleepymario.asc" "${WORKDIR}/" || die
+}
+
+src_prepare() {
+	default  # required: calls eapply_user and sets up patching framework
+}
+
+
 src_configure() { :; }
 src_compile() { :; }
 src_test() { :; }
@@ -22,6 +33,6 @@ src_test() { :; }
 
 src_install() {
 	insinto /usr/share/openpgp-keys
-	doins "${FILESDIR}/sleepymario.asc"
+	doins sleepymario.asc
 }
 

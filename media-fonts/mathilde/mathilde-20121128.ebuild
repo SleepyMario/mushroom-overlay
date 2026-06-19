@@ -1,28 +1,25 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DESCRIPTION=""Mathilde" is a handwritten, cursive/print hybrid typeface that includes accented letterforms, math symbols, as well as opentype contextual alternatives for common double-letter combinations."
+DESCRIPTION="Mathilde handwritten cursive/print hybrid typeface with accented letters, math symbols, and contextual alternatives"
 HOMEPAGE="https://www.dafont.com/mathilde.font"
-SRC_URI="
-		https://dl.dafont.com/dl/?f=mathilde -> mathilde.zip
-		"
+SRC_URI="https://dl.dafont.com/dl/?f=mathilde -> ${P}.zip"
 
-LICENSE=""
+LICENSE="free-noncomm"  # adjust if upstream provides a clearer license
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
+RDEPEND=""
+BDEPEND="app-arch/unzip"
 
-#S=/var/tmp/portage/media-fonts/mathilde-20121128/work/
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
-	addwrite /usr/share/fonts/
-	mkdir -p /usr/share/fonts/mathilde
-	cp ${S}/${PN}.otf /usr/share/fonts/mathilde/${PN}.otf || die
-	}
+	insinto /usr/share/fonts/${PN}
+	doins *.otf || die "No OTF font found"
+}
+

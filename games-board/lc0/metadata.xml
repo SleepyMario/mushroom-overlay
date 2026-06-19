@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <maintainers>
+    <maintainer type="person" email="tech@sleepymario.com">Sleepy Mario</maintainer>
+  </maintainers>
+
+  <longdescription>
+    <![CDATA[
+    Leela Chess Zero (lc0) is an open-source chess engine based on neural networks
+    and reinforcement learning. It is inspired by DeepMind's AlphaZero project and
+    uses GPU acceleration (CUDA, OpenCL) or CPU backends to evaluate positions.
+
+    This package builds the lc0 engine itself. For pre-trained neural networks,
+    install games-board/lc0-networks.
+    ]]>
+  </longdescription>
+
+  <homepage>https://lczero.org/</homepage>
+
+  <upstream>
+    <homepage>https://github.com/LeelaChessZero/lc0</homepage>
+    <bugtracker>https://github.com/LeelaChessZero/lc0/issues</bugtracker>
+  </upstream>
+
+  <license>GPL-3</license>
+
+  <repo>mushroom</repo>
+</metadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    ChatGameFontificator displays Twitch chat using fonts from various video games.
+    It’s designed for stream overlays and creative chat visualization.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">GlitchCog/ChatGameFontificator</remote-id>
+    <bugs-to>https://github.com/GlitchCog/ChatGameFontificator/issues</bugs-to>
+    <doc>https://chatty.github.io/</doc>
+  </upstream>
+</pkgmetadata>
+
