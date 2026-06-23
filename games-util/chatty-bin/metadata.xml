@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    Chatty is a Twitch chat client inspired by classic IRC software.
+    It supports emotes, badges, whispers, moderation tools, and stream integration.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">chatty/chatty</remote-id>
+    <bugs-to>https://github.com/chatty/chatty/issues</bugs-to>
+    <doc>https://chatty.github.io/</doc>
+  </upstream>
+</pkgmetadata>
+

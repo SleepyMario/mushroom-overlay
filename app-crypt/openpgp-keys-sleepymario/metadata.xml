@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    Provides the OpenPGP public key for Sleepy Mario, used to verify commits,
+    tags, and release tarballs in the mushroom overlay and related projects.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">SleepyMario/mushroom-overlay</remote-id>
+    <doc>https://github.com/SleepyMario/mushroom-overlay</doc>
+  </upstream>
+</pkgmetadata>
+

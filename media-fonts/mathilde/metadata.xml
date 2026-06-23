@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    Mathilde is a handwritten cursive/print hybrid typeface that includes accented
+    letterforms, math symbols, and OpenType contextual alternatives for common
+    double-letter combinations. Packaged here for Gentoo as media-fonts/mathilde.
+  </longdescription>
+  <upstream>
+    <homepage>https://www.dafont.com/mathilde.font</homepage>
+  </upstream>
+</pkgmetadata>
+
