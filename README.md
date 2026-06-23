@@ -1,23 +1,25 @@
-mushroom-overlay
+# mushroom-overlay
 
-Personal Gentoo overlay maintained by SleepyMario.
+Personal Gentoo overlay.
 
-This repository contains ebuilds, package metadata, OpenPGP keys, and local patches for software not available in the main Gentoo repository or where a newer/custom package is needed.
+It contains ebuilds and related files for packages I use that are unavailable in the main Gentoo repository, need a newer version, or need local packaging changes.
 
-Packages
-Category	Package	Notes
-app-crypt	openpgp-keys-sleepymario	OpenPGP key package for repository verification
-app-misc	copilot-desktop-snap	Copilot Desktop Snap package
-games-board	lc0	Leela Chess Zero
-games-board	lc0-networks	Neural-network weights for LC0
-games-util	chatgamefontificator-bin	Chat Game Fontificator binary package
-games-util	chatty-bin	Chatty Twitch chat client binary package
-media-fonts	mathilde	Mathilde font
-www-apps	hugo	Hugo static-site generator
-Adding the overlay
+## Packages
 
-Create /etc/portage/repos.conf/mushroom-overlay.conf:
+- `app-crypt/openpgp-keys-sleepymario` ¡X repository OpenPGP key
+- `app-misc/copilot-desktop-snap` ¡X Copilot Desktop Snap
+- `games-board/lc0` ¡X Leela Chess Zero
+- `games-board/lc0-networks` ¡X LC0 neural-network weights
+- `games-util/chatgamefontificator-bin` ¡X Chat Game Fontificator
+- `games-util/chatty-bin` ¡X Chatty Twitch chat client
+- `media-fonts/mathilde` ¡X Mathilde font
+- `www-apps/hugo` ¡X Hugo static-site generator
 
+## Installation
+
+Create `/etc/portage/repos.conf/mushroom-overlay.conf`:
+
+```ini
 [mushroom]
 location = /home/YOUR_USERNAME/Projects/Gentoo/mushroom-overlay
 sync-type = git
@@ -28,12 +30,3 @@ sync-openpgp-key-path = /usr/share/openpgp-keys/sleepymario.asc
 sync-git-verify-commit-signature = true
 priority = 999
 auto-sync = yes
-
-Replace YOUR_USERNAME with your local username.
-
-Sync the overlay:
-
-sudo emaint sync -r mushroom
-License
-
-Individual ebuilds and included files may use their own licenses. See the relevant package directories and the licenses/ directory.
