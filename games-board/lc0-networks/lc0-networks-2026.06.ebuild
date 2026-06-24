@@ -11,7 +11,7 @@ EAPI=8
 DESCRIPTION="Live neural network weights for Leela Chess Zero"
 HOMEPAGE="https://lczero.org/"
 NETWORK_SHA=6147500
-SRC_URI="https://training.lczero.org/networks/${NETWORK_SHA}/download -> network-${NETWORK_SHA}.pb.gz"
+SRC_URI="https://storage.lczero.org/files/networks-contrib/big-transformers/BT4-1024x15x32h-swa-${NETWORK_SHA}.pb.gz -> network-${NETWORK_SHA}.pb.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
