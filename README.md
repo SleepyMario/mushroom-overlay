@@ -7,7 +7,6 @@ It contains ebuilds and related files for packages I use that are unavailable in
 ## Packages
 
 - `app-crypt/openpgp-keys-sleepymario` ¡X repository OpenPGP key
-- `app-misc/copilot-desktop-snap` ¡X Copilot Desktop Snap
 - `games-board/lc0` ¡X Leela Chess Zero
 - `games-board/lc0-networks` ¡X LC0 neural-network weights
 - `games-util/chatgamefontificator-bin` ¡X Chat Game Fontificator
