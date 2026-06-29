@@ -7,8 +7,7 @@ It contains ebuilds and related files for packages I use that are unavailable in
 ## Packages
 
 - `app-crypt/openpgp-keys-sleepymario` ¡X repository OpenPGP key
-- `games-board/lc0` ¡X Leela Chess Zero
-- `games-board/lc0-networks` ¡X LC0 neural-network weights
+- `games-board/lc0` - Leela Chess Zero with optional neural-network weights
 - `games-util/chatgamefontificator-bin` ¡X Chat Game Fontificator
 - `games-util/chatty-bin` ¡X Chatty Twitch chat client
 - `media-fonts/mathilde` ¡X Mathilde font

@@ -10,8 +10,8 @@
     and reinforcement learning. It is inspired by DeepMind's AlphaZero project and
     uses GPU acceleration (CUDA, OpenCL) or CPU backends to evaluate positions.
 
-    This package builds the lc0 engine itself. For pre-trained neural networks,
-    install games-board/lc0-networks.
+    This package builds the lc0 engine itself. Enable the networks USE flag to
+    install a pinned pre-trained neural network.
     ]]>
   </longdescription>
 
@@ -24,5 +24,5 @@
 
   <license>GPL-3</license>
 
-  <repo>mushroom</repo>
+  <repo>mushroom-overlay</repo>
 </metadata>
