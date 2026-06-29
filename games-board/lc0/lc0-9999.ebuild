@@ -10,14 +10,15 @@ inherit meson git-r3
 DESCRIPTION="Neural-network chess engine"
 HOMEPAGE="https://github.com/LeelaChessZero/lc0/"
 
-NETWORK_SHA=6147500
+# Update with scripts/update-lc0-network.sh.
+NETWORK_URI="https://storage.lczero.org/files/networks-contrib/BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz"
+NETWORK_FILE="${NETWORK_URI##*/}"
 EGIT_REPO_URI="https://github.com/LeelaChessZero/lc0.git"
 EGIT_COMMIT="v0.32.1"
 EGIT_SUBMODULES=( libs/lczero-common subprojects/abseil-cpp )
 SRC_URI="
 	networks? (
-		https://storage.lczero.org/files/networks-contrib/big-transformers/BT4-1024x15x32h-swa-${NETWORK_SHA}.pb.gz
-			-> network-${NETWORK_SHA}.pb.gz
+		${NETWORK_URI} -> network-${NETWORK_FILE}
 	)
 "
 
@@ -101,8 +102,8 @@ src_install() {
 
 	if use networks; then
 		insinto /usr/share/lc0/networks
-		doins "${DISTDIR}/network-${NETWORK_SHA}.pb.gz"
-		dosym "network-${NETWORK_SHA}.pb.gz" /usr/share/lc0/networks/network.pb.gz
+		doins "${DISTDIR}/network-${NETWORK_FILE}"
+		dosym "network-${NETWORK_FILE}" /usr/share/lc0/networks/network.pb.gz
 	fi
 
 	default
