@@ -65,6 +65,9 @@ src_prepare() {
 }
 
 src_configure() {
+	export CC="x86_64-pc-linux-gnu-gcc-13"
+	export CXX="x86_64-pc-linux-gnu-g++-13"
+
 	local vc="${VIDEO_CARDS:-}"
 	local detected_nvidia=false
 	case "${vc}" in
@@ -91,6 +94,7 @@ src_configure() {
 		-Dblas=$(usex blas true false)
 		-Dopenblas=$(usex blas true false)
 		-Dispc=$(usex ispc true false)
+		-Dnvcc_ccbin="${CXX}"
 		$(meson_use dnnl dnnl)
 	)
 
