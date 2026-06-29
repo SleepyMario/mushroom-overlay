@@ -15,8 +15,9 @@ NETWORK_URI="https://storage.lczero.org/files/networks-contrib/BT4-1024x15x32h-s
 NETWORK_FILE="${NETWORK_URI##*/}"
 EGIT_REPO_URI="https://github.com/LeelaChessZero/lc0.git"
 EGIT_COMMIT="v0.32.1"
-EGIT_SUBMODULES=( libs/lczero-common subprojects/abseil-cpp )
+EGIT_SUBMODULES=( libs/lczero-common )
 SRC_URI="
+	https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz
 	networks? (
 		${NETWORK_URI} -> network-${NETWORK_FILE}
 	)
@@ -55,6 +56,14 @@ DEPEND="${RDEPEND}"
 
 RESTRICT="!test? ( test ) mirror"
 
+src_prepare() {
+	default
+
+	mkdir -p subprojects/packagecache || die
+	ln -sf "${DISTDIR}/abseil-cpp-20240722.0.tar.gz" \
+		subprojects/packagecache/abseil-cpp-20240722.0.tar.gz || die
+}
+
 src_configure() {
 	local vc="${VIDEO_CARDS:-}"
 	local detected_nvidia=false
@@ -76,7 +85,6 @@ src_configure() {
 	fi
 
 	local emesonargs=(
-		--wrap-mode=default
 		-Dplain_cuda=$(usex cuda true false)
 		-Dcudnn="${allow_cudnn}"
 		-Dopencl=$(usex opencl true false)
