@@ -9,7 +9,7 @@ SRC_URI="https://github.com/SleepyMario/WhackSmacker/archive/refs/tags/v${PV}.ta
 
 S="${WORKDIR}/WhackSmacker-${PV}"
 
-LICENSE="all-rights-reserved"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -29,7 +29,7 @@ src_test() {
 
 src_install() {
 	insinto "/usr/share/${PN}"
-	doins -r dist package.json README.md
+	doins -r COPYING dist package.json README.md
 
 	dosym "../share/${PN}/dist/main.js" "/usr/bin/${PN}"
 	fperms +x "/usr/share/${PN}/dist/main.js"
