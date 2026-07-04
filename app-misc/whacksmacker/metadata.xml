@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    WhackSmacker is a Node.js command-line application for reviewing Anki cards
+    from a terminal through a locally running AnkiConnect instance.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">SleepyMario/WhackSmacker</remote-id>
+  </upstream>
+</pkgmetadata>
