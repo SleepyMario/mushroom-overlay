@@ -1,7 +1,8 @@
-app-crypt  
+app-crypt
 app-misc
 dev-python
-games-board  
-media-fonts
+games-board
 games-util
+media-fonts
 www-apps
+x11-misc

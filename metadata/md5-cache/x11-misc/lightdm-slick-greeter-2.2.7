@@ -1,0 +1,14 @@
+BDEPEND=|| ( dev-lang/vala:0.56 ) sys-devel/gettext >=dev-build/meson-1.2.3 app-alternatives/ninja dev-build/meson-format-array
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=x11-misc/lightdm-1.12[introspection,vala] media-libs/libcanberra x11-libs/cairo x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/libXext x11-libs/pixman
+DESCRIPTION=LightDM greeter forked from Unity by Linux Mint team
+EAPI=8
+HOMEPAGE=https://github.com/linuxmint/slick-greeter
+INHERIT=gnome2-utils meson vala
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=x11-misc/lightdm-1.12[introspection,vala] media-libs/libcanberra x11-libs/cairo x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/libXext x11-libs/pixman
+SLOT=0
+SRC_URI=https://github.com/linuxmint/slick-greeter/archive/2.2.7.tar.gz -> lightdm-slick-greeter-2.2.7.tar.gz
+_eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	flag-o-matic	fd3558f73f6503093adee69adf41020d	gnome2-utils	a8cf148ec7f5ae0b1f1d33ae5f7f9e88	meson	12065b402c6d78a2aec926ed8dfd964f	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	ninja-utils	d063ea1900a793f93eb095010d6d9156	python-utils-r1	18a01bee4e486884d7457cfacde74099	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	sysroot	4c36abaf94ebd3ab32f8abea9a444121	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	vala	b2f2aa400d77b841d952dda847e24d53	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
+_md5_=13d5ca4063458613ed9da74a22dafc09
