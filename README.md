@@ -6,12 +6,14 @@ It contains ebuilds and related files for packages I use that are unavailable in
 
 ## Packages
 
-- `app-crypt/openpgp-keys-sleepymario` ¡X repository OpenPGP key
+- `app-crypt/openpgp-keys-sleepymario` - repository OpenPGP key
+- `app-misc/weightrail` - Weightrail local-first weight tracker (live ebuild)
+- `dev-python/plotext` - Terminal plotting library used by Weightrail
 - `games-board/lc0` - Leela Chess Zero with optional neural-network weights
-- `games-util/chatgamefontificator-bin` ¡X Chat Game Fontificator
-- `games-util/chatty-bin` ¡X Chatty Twitch chat client
-- `media-fonts/mathilde` ¡X Mathilde font
-- `www-apps/hugo` ¡X Hugo static-site generator
+- `games-util/chatgamefontificator-bin` - Chat Game Fontificator
+- `games-util/chatty-bin` - Chatty Twitch chat client
+- `media-fonts/mathilde` - Mathilde font
+- `www-apps/hugo` - Hugo static-site generator
 
 ## Installation
 
