@@ -1,11 +1,11 @@
 app-crypt/openpgp-keys-sleepymario 20260818: OpenPGP key for Sleepy Mario (mushroom overlay signing)
 app-misc/weight-tracker-cli 0.1.0: Simple SQLite-backed terminal weight tracker
+app-misc/weightrail 9999: Local-first SQLite-backed terminal weight tracker
 app-misc/whacksmacker 0.0.1: Terminal review sessions for Anki through AnkiConnect
-dev-python/plotext 5.3.2: Plotting on terminal
+dev-python/plotext 5.3.2: Plot data directly in a terminal
 games-board/lc0 9999: Neural-network chess engine
 games-util/chatgamefontificator-bin 9999: A Twitch chat display that uses the fonts of various video games
 games-util/chatty-bin 0.9.6 0.9.7 0.10 0.11 0.14 0.15 0.17 0.28: Chat software specifically made for Twitch, in the spirit of a classic IRC Client.
 media-fonts/mathilde 20121128: Mathilde handwritten cursive/print hybrid typeface with accented letters, math symbols, and contextual alternatives
-www-apps/hugo 0.163.1: Fast static HTML and CSS website generator
 x11-misc/lightdm-settings 2.1.1: LightDM configuration tool
 x11-misc/lightdm-slick-greeter 1.5.1 2.2.7: LightDM greeter forked from Unity by Linux Mint team

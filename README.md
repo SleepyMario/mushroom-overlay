@@ -13,7 +13,8 @@ It contains ebuilds and related files for packages I use that are unavailable in
 - `games-util/chatgamefontificator-bin` - Chat Game Fontificator
 - `games-util/chatty-bin` - Chatty Twitch chat client
 - `media-fonts/mathilde` - Mathilde font
-- `www-apps/hugo` - Hugo static-site generator
+
+Hugo is provided by the Gentoo main repository and is no longer maintained in this overlay.
 
 ## Installation
 
