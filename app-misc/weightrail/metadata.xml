@@ -14,8 +14,8 @@
     <flag name="gui">Install runtime support for the GTK 3 graphical interface</flag>
   </use>
   <upstream>
-    <remote-id type="github">SleepyMario/weight-tracker-cli</remote-id>
-    <bugs-to>https://github.com/SleepyMario/weight-tracker-cli/issues</bugs-to>
-    <changelog>https://github.com/SleepyMario/weight-tracker-cli/blob/main/CHANGELOG.md</changelog>
+    <remote-id type="github">SleepyMario/weightrail</remote-id>
+    <bugs-to>https://github.com/SleepyMario/weightrail/issues</bugs-to>
+    <changelog>https://github.com/SleepyMario/weightrail/blob/main/CHANGELOG.md</changelog>
   </upstream>
 </pkgmetadata>

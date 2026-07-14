@@ -1,6 +1,5 @@
 app-crypt/openpgp-keys-sleepymario 20260818: OpenPGP key for Sleepy Mario (mushroom overlay signing)
-app-misc/weight-tracker-cli 0.1.0: Simple SQLite-backed terminal weight tracker
-app-misc/weightrail 9999: Local-first SQLite-backed terminal weight tracker
+app-misc/weightrail 0.2.0 9999: Local-first SQLite-backed terminal weight tracker
 app-misc/whacksmacker 0.0.1: Terminal review sessions for Anki through AnkiConnect
 dev-python/plotext 5.3.2: Plot data directly in a terminal
 games-board/lc0 9999: Neural-network chess engine

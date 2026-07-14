@@ -6,14 +6,16 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Local-first SQLite-backed terminal weight tracker"
 HOMEPAGE="https://github.com/SleepyMario/weightrail"
-EGIT_REPO_URI="https://github.com/SleepyMario/weightrail.git"
+SRC_URI="https://github.com/SleepyMario/weightrail/releases/download/v${PV}/${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="gui"
 
 EPYTEST_PLUGINS=()
