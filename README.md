@@ -13,6 +13,7 @@ It contains ebuilds and related files for packages I use that are unavailable in
 - `games-util/chatgamefontificator-bin` - Chat Game Fontificator
 - `games-util/chatty-bin` - Chatty Twitch chat client
 - `media-fonts/mathilde` - Mathilde font
+- `net-im/ferdium-bin` - Ferdium desktop messaging client binary package
 
 Hugo is provided by the Gentoo main repository and is no longer maintained in this overlay.
 
@@ -21,8 +22,9 @@ Hugo is provided by the Gentoo main repository and is no longer maintained in th
 Create `/etc/portage/repos.conf/mushroom-overlay.conf`:
 
 ```ini
-[mushroom]
-location = /home/YOUR_USERNAME/Projects/Gentoo/mushroom-overlay
+[mushroom-overlay]
+location = /home/YOUR_USERNAME/Projects/gentoo/mushroom-overlay
+masters = gentoo
 sync-type = git
 sync-uri = git@github.com:SleepyMario/mushroom-overlay.git
 sync-branch = main
@@ -30,4 +32,5 @@ sync-depth = 1
 sync-openpgp-key-path = /usr/share/openpgp-keys/sleepymario.asc
 sync-git-verify-commit-signature = true
 priority = 999
-auto-sync = yes
+auto-sync = no
+```
