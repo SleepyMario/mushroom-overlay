@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tech@sleepymario.com</email>
+		<name>Sleepy Mario</name>
+	</maintainer>
+	<longdescription>
+		Extensible Vulkan benchmark suite with headless, display, Wayland, XCB,
+		and DRM/KMS window-system backends.
+	</longdescription>
+	<use>
+		<flag name="drm">Build the DRM/KMS window-system backend</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vkmark/vkmark</remote-id>
+	</upstream>
+</pkgmetadata>

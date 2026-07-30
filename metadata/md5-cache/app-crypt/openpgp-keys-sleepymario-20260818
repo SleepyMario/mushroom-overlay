@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DESCRIPTION=OpenPGP key for Sleepy Mario (mushroom overlay signing)
+EAPI=8
+HOMEPAGE=https://github.com/SleepyMario/mushroom-overlay
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+RESTRICT=mirror strip binchecks test
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/SleepyMario/mushroom-overlay/main/keys/sleepymario.asc -> sleepymario.asc
+_md5_=814aa4687210d4b4f114fd5c40689e0a

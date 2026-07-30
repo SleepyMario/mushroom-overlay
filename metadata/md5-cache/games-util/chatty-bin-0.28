@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=>=virtual/jre-1.8
+DESCRIPTION=Chat software specifically made for Twitch, in the spirit of a classic IRC Client.
+EAPI=8
+HOMEPAGE=https://chatty.github.io/
+INHERIT=xdg-utils desktop
+KEYWORDS=amd64
+LICENSE=GPL-3
+RDEPEND=>=virtual/jre-1.8
+SLOT=0
+SRC_URI=https://github.com/chatty/chatty/releases/download/v0.28/Chatty_0.28.zip
+_eclasses_=xdg-utils	42869b3c8d86a70ef3cf75165a395e09	desktop	e447b5f77146d69797e9f03ff177f3f1
+_md5_=f2df6e9780a9e65f600e6257f1d859db

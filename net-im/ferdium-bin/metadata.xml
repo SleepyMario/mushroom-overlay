@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tech@sleepymario.com</email>
+		<name>Sleepy Mario</name>
+	</maintainer>
+	<use>
+		<flag name="wayland">Run Ferdium through Electron's native Ozone Wayland backend</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ferdium/ferdium-app</remote-id>
+	</upstream>
+</pkgmetadata>

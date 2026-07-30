@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=>=virtual/jre-1.8
+DESCRIPTION=A Twitch chat display that uses the fonts of various video games
+EAPI=8
+HOMEPAGE=https://chatty.github.io/
+INHERIT=xdg-utils desktop
+KEYWORDS=amd64
+LICENSE=Unlicense
+RDEPEND=>=virtual/jre-1.8
+SLOT=0
+SRC_URI=https://github.com/GlitchCog/ChatGameFontificator/raw/master/jar/ChatGameFontificator.jar -> chatgamefontificator-bin-9999.jar
+_eclasses_=xdg-utils	42869b3c8d86a70ef3cf75165a395e09	desktop	e447b5f77146d69797e9f03ff177f3f1
+_md5_=88049f10ac742ae12d4708ccdf8ea679

@@ -1,0 +1,18 @@
+BDEPEND=dev-build/meson dev-build/ninja dev-lang/python dev-libs/protobuf sys-devel/gcc:13 >=dev-build/meson-1.2.3 app-alternatives/ninja dev-build/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=dev-cpp/eigen:= dev-cpp/gtest blas? ( sci-libs/openblas ) cuda? ( dev-util/nvidia-cuda-toolkit ) dnnl? ( sci-ml/oneDNN ) onnx? ( sci-libs/onnxruntime ) cudnn? ( dev-libs/cudnn ) ispc? ( dev-lang/ispc ) opencl? ( virtual/opencl ) networks? ( !games-board/lc0-networks )
+DESCRIPTION=Neural-network chess engine
+EAPI=8
+HOMEPAGE=https://github.com/LeelaChessZero/lc0/
+INHERIT=meson git-r3
+IUSE=video_cards_nvidia blas cuda cudnn dnnl ispc onnx openblas opencl +test +networks
+KEYWORDS=~amd64
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=dev-cpp/eigen:= dev-cpp/gtest blas? ( sci-libs/openblas ) cuda? ( dev-util/nvidia-cuda-toolkit ) dnnl? ( sci-ml/oneDNN ) onnx? ( sci-libs/onnxruntime ) cudnn? ( dev-libs/cudnn ) ispc? ( dev-lang/ispc ) opencl? ( virtual/opencl ) networks? ( !games-board/lc0-networks )
+REQUIRED_USE=cudnn? ( cuda )
+RESTRICT=!test? ( test ) mirror
+SLOT=0
+SRC_URI=https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz networks? ( https://storage.lczero.org/files/networks-contrib/BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz -> network-BT4-1024x15x32h-swa-6147500-policytune-332.pb.gz )
+_eclasses_=toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	flag-o-matic	fd3558f73f6503093adee69adf41020d	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	ninja-utils	d063ea1900a793f93eb095010d6d9156	eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	python-utils-r1	5fd9a75ca55021d3276ce969f8e28391	sysroot	4c36abaf94ebd3ab32f8abea9a444121	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	meson	12065b402c6d78a2aec926ed8dfd964f	git-r3	2f8cdb10b033f92c3136aa6488a31c98
+_md5_=a21e96e1cecb638eb0be4b2acee6601b

@@ -1,0 +1,10 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Mathilde handwritten cursive/print hybrid typeface with accented letters, math symbols, and contextual alternatives
+EAPI=8
+HOMEPAGE=https://www.dafont.com/mathilde.font
+KEYWORDS=amd64
+LICENSE=free-noncomm
+SLOT=0
+SRC_URI=https://dl.dafont.com/dl/?f=mathilde -> mathilde-20121128.zip
+_md5_=37330190332228c429b243e4b0a441d5

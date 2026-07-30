@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm unpack
+DESCRIPTION=Desktop AI assistant powered by multiple LLM providers
+EAPI=8
+HOMEPAGE=https://pygpt.net https://github.com/szczyglis-dev/py-gpt
+INHERIT=desktop xdg-utils
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=sys-fs/fuse:0
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/szczyglis-dev/py-gpt/releases/download/v2.7.12/PyGPT-2.7.12-x86_64.AppImage -> pygpt-bin-2.7.12-x86_64.AppImage
+_eclasses_=desktop	e447b5f77146d69797e9f03ff177f3f1	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
+_md5_=87fd572ae6d96c9947e254595dc05338

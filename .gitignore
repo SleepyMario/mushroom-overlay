@@ -1,1 +1,22 @@
-distfiles/
+# Editor files
+*~
+*.swp
+*.swo
+/.idea/
+/.vscode/
+
+# Portage downloads, binary packages, and generated repository timestamps
+/distfiles/
+/packages/
+/metadata/glsa/
+/metadata/timestamp
+/metadata/timestamp.chk
+/metadata/timestamp.x
+/metadata/timestamp.xz
+
+# Common local build and cache artifacts
+/.cache/
+/build/
+/tmp/
+__pycache__/
+*.log
