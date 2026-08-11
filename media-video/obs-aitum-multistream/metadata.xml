@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tech@sleepymario.com</email>
+		<name>Sleepy Mario</name>
+	</maintainer>
+	<longdescription>
+		Aitum Multistream adds an OBS Studio dock for configuring and controlling
+		multiple simultaneous streaming outputs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Aitum/obs-aitum-multistream</remote-id>
+		<bugs-to>https://github.com/Aitum/obs-aitum-multistream/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
