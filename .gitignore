@@ -8,6 +8,7 @@
 # Portage downloads, binary packages, and generated repository timestamps
 /distfiles/
 /packages/
+metadata/md5-cache/
 /metadata/glsa/
 /metadata/timestamp
 /metadata/timestamp.chk
