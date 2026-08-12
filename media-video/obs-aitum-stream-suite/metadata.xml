@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tech@sleepymario.com</email>
+		<name>Sleepy Mario</name>
+	</maintainer>
+	<longdescription>
+		Aitum Stream Suite adds additional canvases, including vertical canvases,
+		and configurable streaming, recording, backtrack, and virtual-camera
+		outputs to OBS Studio.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Aitum/obs-aitum-stream-suite</remote-id>
+		<bugs-to>https://github.com/Aitum/obs-aitum-stream-suite/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
