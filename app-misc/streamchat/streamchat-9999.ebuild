@@ -8,7 +8,7 @@ EGIT_BRANCH="main"
 
 inherit git-r3 go-module
 
-DESCRIPTION="CLI-first merged live chat reader for YouTube and Kick"
+DESCRIPTION="CLI-first merged live chat reader for YouTube, Kick, and Twitch"
 HOMEPAGE="https://github.com/SleepyMario/streamchat"
 
 LICENSE="MIT"
@@ -27,8 +27,7 @@ DOCS=(
 
 src_unpack() {
 	git-r3_src_unpack
-	# Streamchat currently has no external modules.  This preserves the
-	# go-module live-ebuild workflow without inventing a dependency archive.
+	# Vendor module dependencies for the live checkout.
 	go-module_live_vendor
 }
 
