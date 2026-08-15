@@ -6,10 +6,14 @@
     <name>Sleepy Mario</name>
   </maintainer>
   <longdescription>
-    Streamchat is a command-line application that receives official YouTube,
-    Kick, and Twitch live-chat events, normalizes them, and prints one merged
-    stream.
+    Streamchat is a command-line live-chat client and relay server. Kick is
+    beta-complete; YouTube and Twitch support is preliminary. Provider events
+    are normalized into one stream with an optional permanent SQLite archive.
   </longdescription>
+  <use>
+    <flag name="cli">Install the interactive terminal client mode.</flag>
+    <flag name="server">Install the headless relay server mode and systemd unit.</flag>
+  </use>
   <upstream>
     <remote-id type="github">SleepyMario/streamchat</remote-id>
   </upstream>
