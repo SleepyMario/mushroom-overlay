@@ -3,17 +3,18 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/SleepyMario/streamchat.git"
-EGIT_BRANCH="main"
-
-inherit cmake desktop git-r3 go-module systemd
+inherit cmake desktop go-module systemd
 
 DESCRIPTION="Multi-platform live-chat client, native GUI, and relay server"
 HOMEPAGE="https://github.com/SleepyMario/streamchat"
+SRC_URI="
+	https://github.com/SleepyMario/streamchat/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SleepyMario/streamchat/releases/download/v${PV}/${P}-vendor.tar.xz
+"
 
 LICENSE="MIT Apache-2.0 BSD BSD-2 ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 IUSE="+cli +gui server"
 REQUIRED_USE="|| ( cli gui server )"
@@ -35,30 +36,24 @@ DOCS=(
 	CONTRIBUTING.md
 )
 
-src_unpack() {
-	git-r3_src_unpack
-	# Vendor module dependencies for the live checkout.
-	go-module_live_vendor
-}
-
 src_configure() {
 	use gui && cmake_src_configure
 }
 
 src_compile() {
-	GOPROXY=off ego build -trimpath -buildvcs=false \
-		-ldflags "-X main.version=9999" \
+	GOPROXY=off GOFLAGS="-mod=vendor" ego build -trimpath -buildvcs=false \
+		-ldflags "-X main.version=${PV}" \
 		-o streamchat-core ./cmd/streamchat
 	if use gui; then
-		GOPROXY=off ego build -trimpath -buildvcs=false \
-			-ldflags "-X main.version=9999" \
+		GOPROXY=off GOFLAGS="-mod=vendor" ego build -trimpath -buildvcs=false \
+			-ldflags "-X main.version=${PV}" \
 			-o streamchat-gui-runtime ./cmd/streamchat-gui
 		cmake_src_compile
 	fi
 }
 
 src_test() {
-	GOPROXY=off ego test ./...
+	TMPDIR=/tmp GOPROXY=off GOFLAGS="-mod=vendor" ego test ./...
 }
 
 src_install() {

@@ -6,12 +6,13 @@
     <name>Sleepy Mario</name>
   </maintainer>
   <longdescription>
-    Streamchat is a command-line live-chat client and relay server. Kick is
-    beta-complete; YouTube and Twitch support is preliminary. Provider events
-    are normalized into one stream with an optional permanent SQLite archive.
+    Streamchat is a multi-platform live-chat client with a terminal interface,
+    a native Qt GUI, and an optional relay server. Provider events are
+    normalized into one stream with an optional permanent SQLite archive.
   </longdescription>
   <use>
     <flag name="cli">Install the interactive terminal client mode.</flag>
+    <flag name="gui">Install the native Qt graphical client and local-server runtime.</flag>
     <flag name="server">Install the headless relay server mode and systemd unit.</flag>
   </use>
   <upstream>

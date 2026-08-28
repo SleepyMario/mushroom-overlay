@@ -8,7 +8,7 @@ a newer version, or need local packaging changes.
 
 - `app-benchmarks/vkmark` - extensible Vulkan benchmark suite
 - `app-crypt/openpgp-keys-sleepymario` - repository OpenPGP key
-- `app-misc/streamchat` - merged YouTube and Kick live-chat CLI
+- `app-misc/streamchat` - Kick, Twitch, and YouTube chat client with optional native GUI and relay server
 - `app-misc/weightrail` - local-first weight tracker
 - `app-misc/whacksmacker` - terminal review sessions for Anki through AnkiConnect
 - `dev-python/plotext` - terminal plotting library used by Weightrail
