@@ -1,0 +1,83 @@
+#!/bin/bash
+
+set -euo pipefail
+
+usage() {
+	cat <<'EOF'
+Usage: language-subtitles LANGUAGE [CAPTURE_ID]
+
+Supported languages:
+  zh  Mandarin Chinese
+  vi  Vietnamese
+  nl  Dutch
+  en  English
+  jp  Japanese
+  ko  Korean
+  de  German
+
+CAPTURE_ID is the optional numeric SDL microphone identifier. The default is
+-1, which asks SDL to use the default capture device.
+EOF
+}
+
+case "${1:-}" in
+	zh|vi|nl|en|ko|de)
+		language=$1
+		;;
+	jp)
+		language=ja
+		;;
+	-h|--help|"")
+		usage
+		exit 0
+		;;
+	*)
+		printf 'Unsupported language: %s\n\n' "$1" >&2
+		usage >&2
+		exit 2
+		;;
+esac
+
+capture_id=${2:--1}
+if [[ ! ${capture_id} =~ ^-?[0-9]+$ ]]; then
+	printf 'CAPTURE_ID must be a number, received: %s\n' "${capture_id}" >&2
+	exit 2
+fi
+
+model=/usr/share/language-subtitles/ggml-small.bin
+engine=/usr/libexec/language-subtitles/whisper-stream
+state_dir=${XDG_CACHE_HOME:-"${HOME}/.cache"}/language-subtitles
+output=${state_dir}/current.txt
+
+if [[ ! -x ${engine} ]]; then
+	printf 'Subtitle engine is missing: %s\n' "${engine}" >&2
+	exit 1
+fi
+
+if [[ ! -r ${model} ]]; then
+	printf 'Whisper model is missing: %s\n' "${model}" >&2
+	exit 1
+fi
+
+install -d -m 0700 "${state_dir}"
+: > "${output}"
+
+cleanup() {
+	: > "${output}"
+}
+trap cleanup EXIT HUP INT TERM
+
+printf 'Language: %s\n' "${1}"
+printf 'OBS subtitle file: %s\n' "${output}"
+printf 'Stop with Ctrl+C.\n\n'
+
+"${engine}" \
+	--model "${model}" \
+	--language "${language}" \
+	--capture "${capture_id}" \
+	--file "${output}" \
+	--threads 2 \
+	--step 2000 \
+	--length 6000 \
+	--keep 200 \
+	--no-fallback

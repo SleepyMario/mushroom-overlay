@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    Language Subtitles provides a deliberately small command-line interface
+    around whisper.cpp's real-time microphone transcription. It installs the
+    multilingual Whisper Small model and writes live captions to a stable text
+    file suitable for an OBS text source.
+  </longdescription>
+  <use>
+    <flag name="cuda">Use an NVIDIA GPU for Whisper inference.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ggml-org/whisper.cpp</remote-id>
+  </upstream>
+</pkgmetadata>
