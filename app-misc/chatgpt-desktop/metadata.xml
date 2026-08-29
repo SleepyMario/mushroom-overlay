@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
+  <longdescription>
+    The official OpenAI ChatGPT desktop application for Linux, repackaged from
+    the upstream amd64 Debian binary distribution.
+  </longdescription>
+  <upstream>
+    <maintainer status="active">
+      <email>support@openai.com</email>
+      <name>OpenAI</name>
+    </maintainer>
+    <bugs-to>https://help.openai.com/</bugs-to>
+  </upstream>
+</pkgmetadata>
