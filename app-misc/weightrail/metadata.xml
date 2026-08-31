@@ -2,20 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>tech@sleepymario.com</email>
-    <name>Sleepy Mario</name>
+    <email>theonesleepymario@gmail.com</email>
+    <name>Ashwin</name>
   </maintainer>
-  <longdescription>
-    Weightrail is a local-first weight tracker backed by SQLite. It provides a
-    terminal interface with statistics and terminal plots, plus an optional GTK
-    3 graphical interface.
-  </longdescription>
-  <use>
-    <flag name="gui">Install runtime support for the GTK 3 graphical interface</flag>
-  </use>
   <upstream>
     <remote-id type="github">SleepyMario/weightrail</remote-id>
-    <bugs-to>https://github.com/SleepyMario/weightrail/issues</bugs-to>
-    <changelog>https://github.com/SleepyMario/weightrail/blob/main/CHANGELOG.md</changelog>
   </upstream>
+  <use>
+    <flag name="graph">Install plotext for terminal graph rendering</flag>
+    <flag name="gui">
+      Install GTK 3, PyGObject, and Matplotlib for the graphical interface
+    </flag>
+  </use>
 </pkgmetadata>
