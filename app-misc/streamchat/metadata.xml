@@ -14,6 +14,7 @@
     <flag name="cli">Install the interactive terminal client mode.</flag>
     <flag name="gui">Install the native Qt graphical client and local-server runtime.</flag>
     <flag name="server">Install the headless relay server mode and systemd unit.</flag>
+    <flag name="bot">Enable the integrated bot automation feature declaration; requires server.</flag>
   </use>
   <upstream>
     <remote-id type="github">SleepyMario/streamchat</remote-id>
