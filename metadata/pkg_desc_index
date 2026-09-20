@@ -1,7 +1,7 @@
 app-benchmarks/vkmark 2025.01 9999: Extensible Vulkan benchmarking suite
 app-crypt/openpgp-keys-sleepymario 20260818: OpenPGP key for Sleepy Mario (mushroom overlay signing)
 app-misc/streamchat 9999: CLI-first merged live chat reader for YouTube and Kick
-app-misc/weightrail 0.2.0 9999: Local-first SQLite-backed terminal weight tracker
+app-misc/weightrail 0.2.0 0.3.0 0.3.1 9999: Local-first SQLite-backed terminal weight tracker
 app-misc/whacksmacker 0.0.1: Terminal review sessions for Anki through AnkiConnect
 dev-python/plotext 5.3.2: Plot data directly in a terminal
 dev-utils/pygpt-bin 2.7.12: Desktop AI assistant powered by multiple LLM providers
