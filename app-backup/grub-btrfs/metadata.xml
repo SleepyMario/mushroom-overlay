@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pascal.jaeger@leimstift.de</email>
+		<name>Pascal Jäger</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Antynea/grub-btrfs</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Improves GRUB by adding a Btrfs snapshots submenu. It supports
+		manual snapshots and snapshots created by common snapshot tools.
+	</longdescription>
+</pkgmetadata>
