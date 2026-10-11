@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+description="MediaMTX real-time media server"
+command="/usr/bin/mediamtx"
+command_args="/etc/mediamtx/mediamtx.yml"
+command_user="mediamtx:mediamtx"
+directory="/var/lib/mediamtx"
+command_background="yes"
+pidfile="/run/mediamtx.pid"
+
+depend() {
+	need net
+}

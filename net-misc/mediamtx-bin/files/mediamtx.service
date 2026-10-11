@@ -1,0 +1,21 @@
+[Unit]
+Description=MediaMTX real-time media server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mediamtx
+Group=mediamtx
+WorkingDirectory=/var/lib/mediamtx
+ExecStart=/usr/bin/mediamtx /etc/mediamtx/mediamtx.yml
+Restart=on-failure
+RestartSec=2s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/mediamtx
+
+[Install]
+WantedBy=multi-user.target
