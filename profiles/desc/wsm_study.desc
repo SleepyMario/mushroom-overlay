@@ -1,0 +1,19 @@
+# WSM built-in study language menu entries; private decks are installed separately.
+ar - Enable the Arabic study menu skeleton
+de - Enable the German study menu skeleton
+en - Enable the English study menu skeleton
+es - Enable the Spanish study menu skeleton
+fr - Enable the French study menu skeleton
+grc - Enable the Classical Greek study menu skeleton
+hi - Enable the Hindi study menu skeleton
+ja - Enable the Japanese study menu skeleton
+ko - Enable the Korean study menu skeleton
+la - Enable the Latin study menu skeleton
+lzh - Enable the Classical Chinese study menu skeleton
+nl - Enable the Dutch study menu skeleton
+ru - Enable the Russian study menu skeleton
+th - Enable the Thai study menu skeleton
+vi - Enable the Vietnamese study menu skeleton
+zh_CN - Enable the Simplified Chinese study menu skeleton
+zh_TW - Enable the Traditional Chinese study menu skeleton
+zu - Enable the Zulu study menu skeleton

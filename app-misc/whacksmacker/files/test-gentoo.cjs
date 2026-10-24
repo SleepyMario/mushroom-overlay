@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const opts=require('./dist/gentoo-build-options.json');
+const mods=require('./dist/packages/core/modules.js').getBuiltInFirstClassModules();
+assert.deepEqual(mods.filter(m=>m.category==='Languages').map(m=>m.moduleId).sort(),opts.moduleIds.sort());
+assert.equal(mods.some(m=>m.category==='Geography'),opts.geography);
+assert.equal(fs.existsSync('dist/packages/geography/data/world-seven-continents.png'),opts.geography);
+const i18n=require('./dist/src/i18n/index.js');
+assert(i18n.isSourceLocale('en-US'));
+assert.equal(i18n.isSourceLocale('zh-Hant-TW'),opts.interfaceLocales.includes('zh-Hant-TW'));
+assert.equal(fs.existsSync('dist/src/i18n/locales/zh-Hant-TW.json'),opts.interfaceLocales.includes('zh-Hant-TW'));
+assert(!fs.existsSync('dist/apps/cli/content/japanese'));
+assert(!fs.existsSync('dist/apps/cli/content/korean'));
+assert(!fs.existsSync('dist/apps/cli/content/vietnamese'));
+console.log('PASS Gentoo interface flags, study skeleton selection, geography selection, private-content exclusion');

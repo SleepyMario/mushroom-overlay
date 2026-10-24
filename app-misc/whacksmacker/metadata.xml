@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>tech@sleepymario.com</email>
-    <name>Sleepy Mario</name>
-  </maintainer>
-  <longdescription>
-    WhackSmacker is a Node.js command-line application for reviewing Anki cards
-    from a terminal through a locally running AnkiConnect instance.
-  </longdescription>
-  <upstream>
-    <remote-id type="github">SleepyMario/WhackSmacker</remote-id>
-  </upstream>
+  <maintainer type="person"><email>tech@sleepymario.com</email><name>Sleepy Mario</name></maintainer>
+  <longdescription>Native terminal learning workflows. L10N selects interface translations; WSM_STUDY selects built-in language menu skeletons. Private curricula are not bundled. Independently installed user content is preserved.</longdescription>
+  <use><flag name="geo">Include public geography content and built-in geography menu entries</flag></use>
+  <upstream><remote-id type="github">SleepyMario/WhackSmacker</remote-id></upstream>
 </pkgmetadata>
