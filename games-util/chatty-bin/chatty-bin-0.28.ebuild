@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND=">=virtual/jre-1.8"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 

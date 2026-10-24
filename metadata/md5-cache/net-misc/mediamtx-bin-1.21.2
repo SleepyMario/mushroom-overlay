@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst
+DESCRIPTION=Ready-to-use real-time media server and media proxy
+EAPI=8
+HOMEPAGE=https://github.com/bluenviron/mediamtx
+INHERIT=systemd
+KEYWORDS=~amd64 ~arm64
+LICENSE=MIT
+RDEPEND=acct-user/mediamtx
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://github.com/bluenviron/mediamtx/releases/download/v1.21.2/mediamtx_v1.21.2_linux_amd64.tar.gz ) arm64? ( https://github.com/bluenviron/mediamtx/releases/download/v1.21.2/mediamtx_v1.21.2_linux_arm64.tar.gz )
+_eclasses_=toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	systemd	a964c0cbe818b5729da1dbfcee5be861
+_md5_=4f968aa7fddc04054d95f20ad4d93182

@@ -1,0 +1,14 @@
+BDEPEND=>=net-libs/nodejs-22
+DEFINED_PHASES=compile install prepare test
+DESCRIPTION=Terminal learning application with selectable public language menu skeletons
+EAPI=8
+HOMEPAGE=https://github.com/SleepyMario/WhackSmacker
+IUSE=+geo +l10n_en l10n_zh-TW test wsm_study_ar wsm_study_de wsm_study_en wsm_study_es wsm_study_fr wsm_study_grc wsm_study_hi wsm_study_ja wsm_study_ko wsm_study_la wsm_study_lzh wsm_study_nl wsm_study_ru wsm_study_th wsm_study_vi wsm_study_zh_CN wsm_study_zh_TW wsm_study_zu
+KEYWORDS=~amd64
+LICENSE=GPL-3+ BSD-2 MIT ISC
+RDEPEND=>=net-libs/nodejs-22
+REQUIRED_USE=l10n_en
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/SleepyMario/WhackSmacker/archive/b06740a8604e9965daacf0ee5f677d06f6395f5c.tar.gz -> whacksmacker-0.1.0_alpha4.tar.gz https://github.com/SleepyMario/mushroom-overlay/releases/download/distfiles-whacksmacker-0.1.0-alpha.4/whacksmacker-0.1.0_alpha4-node-deps.tar.gz
+_md5_=217406f3417d9109f94d25195b3405cb

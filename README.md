@@ -4,6 +4,11 @@
 metadata for packages that are unavailable in the main Gentoo repository, need
 a newer version, or need local packaging changes.
 
+## Release policy
+
+Use stable upstream releases for third-party packages; skip alpha and beta releases.
+The maintainer’s own projects are exempt and may package prereleases.
+
 ## Packages
 
 - `app-benchmarks/vkmark` - extensible Vulkan benchmark suite

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare pretend unpack
+DESCRIPTION=Official ChatGPT desktop app for Linux
+EAPI=8
+HOMEPAGE=https://chatgpt.com/ https://learn.chatgpt.com/docs/linux/linux-app
+IDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+INHERIT=unpacker xdg
+KEYWORDS=-* ~amd64
+LICENSE=all-rights-reserved
+RDEPEND=>=app-accessibility/at-spi2-core-2.46.0:2 app-arch/xz-utils dev-libs/expat dev-libs/glib:2 dev-libs/libusb:1 dev-libs/nspr dev-libs/nss dev-libs/wayland media-libs/alsa-lib media-libs/libglvnd[X] media-libs/mesa[gbm(+)] net-print/cups sys-apps/dbus virtual/udev x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3[X,wayland] x11-libs/libdrm x11-libs/libnotify x11-libs/libX11 x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libxkbcommon x11-libs/libXrandr x11-libs/pango x11-misc/xdg-utils
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.825.51511_amd64.deb
+_eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	unpacker	a89c769f7dcf68bd2a6d23da9ede2ad2	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575
+_md5_=9190ac724d41c154f2e398966c7d769c

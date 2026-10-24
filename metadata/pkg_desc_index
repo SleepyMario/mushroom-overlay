@@ -1,14 +1,26 @@
+acct-group/mediamtx 0: Group for MediaMTX
+acct-group/streamchat 0: Group for the Streamchat relay service
+acct-user/mediamtx 0: User for MediaMTX
+acct-user/streamchat 0: User for the Streamchat relay service
+app-backup/grub-btrfs 4.14: Improves Grub by adding btrfs snapshots to the Grub menu
 app-benchmarks/vkmark 2025.01 9999: Extensible Vulkan benchmarking suite
 app-crypt/openpgp-keys-sleepymario 20260818: OpenPGP key for Sleepy Mario (mushroom overlay signing)
-app-misc/streamchat 9999: CLI-first merged live chat reader for YouTube and Kick
-app-misc/weightrail 0.2.0 0.3.0 0.3.1 9999: Local-first SQLite-backed terminal weight tracker
-app-misc/whacksmacker 0.0.1: Terminal review sessions for Anki through AnkiConnect
+app-misc/chatgpt-desktop 26.818.41705 26.825.32147 26.825.51511: Official ChatGPT desktop app for Linux
+app-misc/streamchat 2.0 3.0 4.0 4.0.1 9999: Multi-platform live-chat client, native GUI, and relay server
+app-misc/weightrail 0.2.0 0.3.0 0.3.1 0.4.0 9999: Local-first SQLite-backed terminal weight tracker
+app-misc/whacksmacker 0.0.1 0.1.0_alpha4: Terminal learning application with selectable public language menu skeletons
+app-misc/yazi 26.5.6: Blazing fast terminal file manager written in Rust, based on async I/O
 dev-python/plotext 5.3.2: Plot data directly in a terminal
 dev-utils/pygpt-bin 2.7.12: Desktop AI assistant powered by multiple LLM providers
 games-board/lc0 9999: Neural-network chess engine
 games-util/chatgamefontificator-bin 9999: A Twitch chat display that uses the fonts of various video games
 games-util/chatty-bin 0.9.6 0.9.7 0.10 0.11 0.14 0.15 0.17 0.28: Chat software specifically made for Twitch, in the spirit of a classic IRC Client.
+gnome-extra/extension-manager 0.6.5 9999: A native tool for browsing, installing, and managing GNOME Shell Extensions
+mail-client/proton-mail-bin 1.13.4 1.14.0: Desktop client for Proton Mail and Proton Calendar
 media-fonts/mathilde 20121128: Mathilde handwritten cursive/print hybrid typeface with accented letters, math symbols, and contextual alternatives
-net-im/ferdium-bin 7.1.2: Desktop app that combines messaging services in one application
+media-sound/language-subtitles 4938: GPU-accelerated live multilingual subtitles for OBS
+net-im/ferdium-bin 7.2.3: Desktop app that combines messaging services in one application
+net-misc/mediamtx-bin 1.21.2: Ready-to-use real-time media server and media proxy
+net-vpn/speedify-bin 17.1.0: Channel-bonding VPN client and graphical interface
 x11-misc/lightdm-settings 2.1.1: LightDM configuration tool
 x11-misc/lightdm-slick-greeter 1.5.1 2.2.7: LightDM greeter forked from Unity by Linux Mint team

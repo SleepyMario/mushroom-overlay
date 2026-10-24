@@ -1,0 +1,20 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
+
+app-benchmarks/vkmark:drm - Build the DRM/KMS window-system backend
+app-misc/streamchat:bot - Enable the integrated bot automation feature declaration; requires server.
+app-misc/streamchat:cli - Install the interactive terminal client mode.
+app-misc/streamchat:gui - Install the native Qt graphical client and local-server runtime.
+app-misc/streamchat:server - Install the headless relay server mode and systemd unit.
+app-misc/weightrail:graph - Install plotext for terminal graph rendering
+app-misc/weightrail:gui - Install GTK 3, PyGObject, and Matplotlib for the graphical interface
+app-misc/whacksmacker:geo - Include public geography content and built-in geography menu entries
+app-misc/yazi:cli - Install the companion ya command-line utility.
+games-board/lc0:cudnn - Enable the NVIDIA cuDNN backend
+games-board/lc0:dnnl - Enable the oneDNN backend
+games-board/lc0:ispc - Enable ISPC optimized kernels
+games-board/lc0:networks - Install a pinned pre-trained neural network
+games-board/lc0:openblas - Enable OpenBLAS support
+media-sound/language-subtitles:cuda - Use an NVIDIA GPU for Whisper inference.
+net-im/ferdium-bin:wayland - Run Ferdium through Electron's native Ozone Wayland backend

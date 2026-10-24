@@ -28,7 +28,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE_VIDEO_CARDS="video_cards_nvidia"
-IUSE="${IUSE_VIDEO_CARDS} blas cuda cudnn dnnl ispc onnx openblas opencl +test +networks"
+IUSE="${IUSE_VIDEO_CARDS} blas cuda cudnn dnnl ispc openblas opencl +test +networks"
 
 BDEPEND="
 	dev-build/meson
@@ -43,7 +43,6 @@ RDEPEND="dev-cpp/eigen:=
 	blas? ( sci-libs/openblas )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	dnnl? ( sci-ml/oneDNN )
-	onnx? ( sci-libs/onnxruntime )
 	cudnn? ( dev-libs/cudnn )
 	ispc? ( dev-lang/ispc )
 	opencl? ( virtual/opencl )
@@ -98,12 +97,7 @@ src_configure() {
 		$(meson_use dnnl dnnl)
 	)
 
-	if use onnx; then
-		emesonargs+=(
-			'-Donnx_libdir=/usr/lib64'
-			'-Donnx_include=/usr/include/onnxruntime'
-		)
-	fi
+
 
 	meson_src_configure "${emesonargs[@]}"
 }

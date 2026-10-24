@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata>
-  <maintainers>
-    <maintainer type="person" email="tech@sleepymario.com">Sleepy Mario</maintainer>
-  </maintainers>
-
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tech@sleepymario.com</email>
+    <name>Sleepy Mario</name>
+  </maintainer>
   <longdescription>
-    <![CDATA[
-    Leela Chess Zero (lc0) is an open-source chess engine based on neural networks
-    and reinforcement learning. It is inspired by DeepMind's AlphaZero project and
-    uses GPU acceleration (CUDA, OpenCL) or CPU backends to evaluate positions.
-
-    This package builds the lc0 engine itself. Enable the networks USE flag to
-    install a pinned pre-trained neural network.
-    ]]>
+    Leela Chess Zero is a neural-network chess engine with GPU and CPU backends.
+    Enable networks to install a pinned pre-trained neural network.
   </longdescription>
-
-  <homepage>https://lczero.org/</homepage>
-
+  <use>
+    <flag name="cudnn">Enable the NVIDIA cuDNN backend</flag>
+    <flag name="dnnl">Enable the oneDNN backend</flag>
+    <flag name="ispc">Enable ISPC optimized kernels</flag>
+    <flag name="networks">Install a pinned pre-trained neural network</flag>
+    <flag name="openblas">Enable OpenBLAS support</flag>
+  </use>
   <upstream>
-    <homepage>https://github.com/LeelaChessZero/lc0</homepage>
-    <bugtracker>https://github.com/LeelaChessZero/lc0/issues</bugtracker>
+    <remote-id type="github">LeelaChessZero/lc0</remote-id>
+    <bugs-to>https://github.com/LeelaChessZero/lc0/issues</bugs-to>
   </upstream>
-
-  <license>GPL-3</license>
-
-  <repo>mushroom-overlay</repo>
-</metadata>
+</pkgmetadata>
