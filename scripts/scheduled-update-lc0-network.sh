@@ -14,7 +14,7 @@ cd "$ROOT"
 
 flock -n "$LOCK_FILE" "$ROOT/scripts/update-lc0-network.sh"
 
-if ! git diff --quiet -- games-board/lc0/lc0-9999.ebuild games-board/lc0/Manifest; then
+if ! git diff --quiet -- games-board/lc0; then
 	printf '[%s] LC0 network changed; review, commit, and push overlay updates.\n' "$(date '+%Y-%m-%d %H:%M:%S %z')"
 	git status --short
 else

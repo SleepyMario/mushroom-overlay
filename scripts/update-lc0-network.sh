@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-EBUILD="$ROOT/games-board/lc0/lc0-9999.ebuild"
+EBUILD="$ROOT/games-board/lc0/lc0-0.33.0_rc0-r1.ebuild"
 BESTNETS_URL="https://lczero.org/play/networks/bestnets/"
 DISTDIR="${DISTDIR:-$ROOT/distfiles}"
 

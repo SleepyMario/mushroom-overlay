@@ -11,9 +11,9 @@
   </longdescription>
   <use>
     <flag name="cudnn">Enable the NVIDIA cuDNN backend</flag>
-    <flag name="dnnl">Enable the oneDNN backend</flag>
+    <flag name="dnnl">Use oneDNN for the BLAS backend</flag>
     <flag name="ispc">Enable ISPC optimized kernels</flag>
-    <flag name="networks">Install a pinned pre-trained neural network</flag>
+    <flag name="networks">Install pinned BT4 weights and, with OpenCL, compatible T70 weights</flag>
     <flag name="openblas">Enable OpenBLAS support</flag>
   </use>
   <upstream>
