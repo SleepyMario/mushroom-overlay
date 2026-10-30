@@ -1,0 +1,26 @@
+Guard optional Direct3D external-memory enums absent from newer Linux OpenCL headers.
+Keep each enum available when its corresponding SDK definition exists.
+
+--- a/third_party/opencl.hpp
++++ b/third_party/opencl.hpp
+@@ -7195,11 +7195,19 @@
+     OpaqueWin32 = CL_EXTERNAL_MEMORY_HANDLE_OPAQUE_WIN32_KHR,
+     OpaqueWin32Kmt = CL_EXTERNAL_MEMORY_HANDLE_OPAQUE_WIN32_KMT_KHR,
+ 
++#ifdef CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KHR
+     D3D11Texture = CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KHR,
++#endif
++#ifdef CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KMT_KHR
+     D3D11TextureKmt = CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KMT_KHR,
+-
++#endif
++
++#ifdef CL_EXTERNAL_MEMORY_HANDLE_D3D12_HEAP_KHR
+     D3D12Heap = CL_EXTERNAL_MEMORY_HANDLE_D3D12_HEAP_KHR,
++#endif
++#ifdef CL_EXTERNAL_MEMORY_HANDLE_D3D12_RESOURCE_KHR
+     D3D12Resource = CL_EXTERNAL_MEMORY_HANDLE_D3D12_RESOURCE_KHR,
++#endif
+ 
+     DmaBuf = CL_EXTERNAL_MEMORY_HANDLE_DMA_BUF_KHR,
+ };

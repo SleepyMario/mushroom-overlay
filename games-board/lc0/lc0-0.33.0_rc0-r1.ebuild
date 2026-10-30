@@ -1,13 +1,11 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# dev/cpp/gest AND lc0 BOTH NEED TO BE BUILT WITH GCC13 FOR NOW.
-
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit meson python-any-r1
+inherit meson python-any-r1 toolchain-funcs
 
 DESCRIPTION="Neural-network chess engine"
 HOMEPAGE="https://github.com/LeelaChessZero/lc0/"
@@ -40,7 +38,7 @@ BDEPEND="
 	dev-build/ninja
 	${PYTHON_DEPS}
 	dev-libs/protobuf
-	sys-devel/gcc:13
+	cuda? ( sys-devel/gcc:13 )
 	"
 
 RDEPEND="dev-cpp/eigen:=
@@ -69,6 +67,8 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test ) mirror"
 
+PATCHES=( "${FILESDIR}/${PN}-0.33.0-opencl-optional-d3d.patch" )
+
 src_prepare() {
 	default
 
@@ -78,8 +78,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export CC="x86_64-pc-linux-gnu-gcc-13"
-	export CXX="x86_64-pc-linux-gnu-g++-13"
+	tc-export CC CXX
 
 	local emesonargs=(
 		-Dplain_cuda=$(usex cuda true false)
@@ -94,7 +93,7 @@ src_configure() {
 		-Dmkl=false
 		-Dnative_cuda=false
 		-Dnvcc=$(usex cuda true false)
-		-Dnvcc_ccbin="${CXX}"
+		-Dnvcc_ccbin="${CHOST}-g++-13"
 		$(meson_use dnnl dnnl)
 	)
 
