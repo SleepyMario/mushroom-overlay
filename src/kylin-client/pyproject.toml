@@ -3,14 +3,14 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "kylin-webapp"
+name = "kylin-client"
 version = "0.1.0"
 description = "Configurable desktop client for a central Kylin service"
 requires-python = ">=3.11"
 license = "MIT"
 
 [project.scripts]
-kylin-webapp = "kylin_webapp.client:main"
+kylin-client = "kylin_client.client:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

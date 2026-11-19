@@ -2,12 +2,13 @@
 Type=Application
 Name=Kylin
 Comment=Connect to your shared Kylin conversations and notes
-Exec=kylin-webapp
-Icon=kylin-webapp
+Exec=kylin-client
+Icon=kylin-client
 Terminal=false
+StartupWMClass=kylin-client
 Categories=Network;
 Actions=Configure;
 
 [Desktop Action Configure]
 Name=Connection settings
-Exec=kylin-webapp --configure
+Exec=kylin-client --configure

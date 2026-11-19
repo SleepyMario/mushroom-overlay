@@ -9,6 +9,6 @@
     <remote-id type="github">SleepyMario/mushroom-overlay</remote-id>
   </upstream>
   <use>
-    <flag name="gui">Install the graphical connection dialog and desktop launcher</flag>
+    <flag name="gui">Install the GTK window, WebKitGTK engine bindings and connection dialog</flag>
   </use>
 </pkgmetadata>

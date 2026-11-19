@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import threading
 import unittest
-from kylin_webapp import client
+from kylin_client import client
 
 
 class Backend(BaseHTTPRequestHandler):
@@ -124,11 +124,6 @@ class ClientTests(unittest.TestCase):
             again.server_close()
             other.server_close()
 
-    def test_browser_command_no_shell_or_regular_profile(self):
-        command = client.browser_args('/some path/brave', Path('/private/profile'), 'http://127.0.0.1:12345/')
-        self.assertIn('--user-data-dir=/private/profile/browser', command)
-        self.assertIn('--app=http://127.0.0.1:12345/', command)
-        self.assertNotIn('--no-sandbox', command)
 
 
 class ConfigTests(unittest.TestCase):

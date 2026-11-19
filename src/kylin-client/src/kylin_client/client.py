@@ -5,14 +5,11 @@ import http.client
 import json
 import os
 from pathlib import Path
-import shutil
 import signal
 import ssl
-import subprocess
 import sys
 import tempfile
 import threading
-import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit, urlunsplit
 
@@ -23,10 +20,10 @@ HOP = {'connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization',
 
 def config_home():
     if sys.platform == 'win32':
-        return Path(os.environ.get('APPDATA', Path.home() / 'AppData/Roaming')) / 'kylin-webapp'
+        return Path(os.environ.get('APPDATA', Path.home() / 'AppData/Roaming')) / 'kylin-client'
     if sys.platform == 'darwin':
-        return Path.home() / 'Library/Application Support/kylin-webapp'
-    return Path(os.environ.get('XDG_CONFIG_HOME', Path.home() / '.config')) / 'kylin-webapp'
+        return Path.home() / 'Library/Application Support/kylin-client'
+    return Path(os.environ.get('XDG_CONFIG_HOME', Path.home() / '.config')) / 'kylin-client'
 
 
 def service_url(value):
@@ -58,16 +55,13 @@ def validate_config(raw):
         raise ValueError('The access token must contain printable ASCII only.')
     if token and urlsplit(url).scheme == 'http' and urlsplit(url).hostname not in ('localhost', '127.0.0.1', '::1'):
         raise ValueError('Use HTTPS when sending an access token to a remote service.')
-    browser = raw.get('browser', '')
-    if not isinstance(browser, str) or '\x00' in browser:
-        raise ValueError('Browser must be an executable path, not a command with arguments.')
     try:
         timeout = int(raw.get('timeout', 600))
     except (ValueError, TypeError):
         raise ValueError('Request timeout must be a number of seconds.') from None
     if not 1 <= timeout <= 3600:
         raise ValueError('Request timeout must be between 1 and 3600 seconds.')
-    return dict(service_url=url, access_token=token, browser=browser, timeout=timeout)
+    return dict(service_url=url, access_token=token, timeout=timeout)
 
 
 def write_json(path, value):
@@ -86,40 +80,8 @@ def write_json(path, value):
 
 
 def configure(path):
-    # Qt is used only for this small connection dialog, not as another browser engine.
-    try:
-        from PyQt6.QtWidgets import (QApplication, QDialog, QDialogButtonBox,
-                                    QFormLayout, QLabel, QLineEdit, QMessageBox)
-    except ImportError:
-        raise ValueError('Graphical setup needs PyQt6. Alternatively create the JSON configuration shown in --help.')
-    app = QApplication.instance() or QApplication(sys.argv[:1])
-    old = json.loads(path.read_text()) if path.exists() else {}
-    dialog = QDialog()
-    dialog.setWindowTitle('Kylin connection')
-    layout = QFormLayout(dialog)
-    layout.addRow(QLabel('Connect to the Kylin service that stores your conversations and notes.'))
-    url = QLineEdit(old.get('service_url', ''))
-    url.setPlaceholderText('https://your-kylin-server.example')
-    token = QLineEdit(old.get('access_token', ''))
-    token.setEchoMode(QLineEdit.EchoMode.Password)
-    browser = QLineEdit(old.get('browser', ''))
-    browser.setPlaceholderText('Automatic (Chromium, Brave, Chrome or Edge)')
-    layout.addRow('Service address', url)
-    layout.addRow('Access token (optional)', token)
-    layout.addRow('Browser executable (optional)', browser)
-    layout.addRow(QLabel('Changes take effect next time you start the app. Existing windows keep their connection.'))
-    buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Save | QDialogButtonBox.StandardButton.Cancel)
-    layout.addRow(buttons)
-    def save():
-        try:
-            value = validate_config(dict(old, service_url=url.text(), access_token=token.text(), browser=browser.text()))
-            write_json(path, value)
-            dialog.accept()
-        except (ValueError, OSError) as exc:
-            QMessageBox.warning(dialog, 'Connection settings', str(exc))
-    buttons.accepted.connect(save)
-    buttons.rejected.connect(dialog.reject)
-    return dialog.exec() == QDialog.DialogCode.Accepted
+    from .window import configure as show_settings
+    return show_settings(path)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -233,34 +195,6 @@ def profile_server(config, directory):
     return server, path
 
 
-def find_browser(configured=''):
-    if configured:
-        result = shutil.which(configured)
-        if not result:
-            raise ValueError('The configured browser executable was not found.')
-        return result
-    for name in ('brave-browser-stable', 'brave-browser', 'brave', 'chromium',
-                 'chromium-browser', 'google-chrome-stable', 'google-chrome', 'microsoft-edge', 'msedge'):
-        if result := shutil.which(name):
-            return result
-    candidates = [
-        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-        '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
-    ]
-    if sys.platform == 'win32':
-        for root in ('PROGRAMFILES', 'PROGRAMFILES(X86)', 'LOCALAPPDATA'):
-            if base := os.environ.get(root):
-                candidates.extend(str(Path(base) / tail) for tail in (
-                    'Google/Chrome/Application/chrome.exe', 'Microsoft/Edge/Application/msedge.exe',
-                    'BraveSoftware/Brave-Browser/Application/brave.exe'))
-    return next((p for p in candidates if Path(p).is_file()), None)
-
-
-def browser_args(executable, profile, url):
-    return [executable, '--user-data-dir=' + str(profile / 'browser'),
-            '--no-first-run', '--no-default-browser-check', '--app=' + url]
-
-
 def check_service(config):
     target = urlsplit(config['service_url'])
     cls = http.client.HTTPSConnection if target.scheme == 'https' else http.client.HTTPConnection
@@ -282,10 +216,9 @@ def check_service(config):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__, epilog='JSON configuration: {"service_url":"https://your-server.example", "access_token":"", "browser":"", "timeout":600}. Model settings remain on the service.')
+    parser = argparse.ArgumentParser(description=__doc__, epilog='JSON configuration: {"service_url":"https://your-server.example", "access_token":"", "timeout":600}. Model settings remain on the service.')
     parser.add_argument('--config', type=Path, default=config_home() / 'config.json')
     parser.add_argument('--configure', action='store_true', help='edit connection settings without starting the model')
-    parser.add_argument('--browser', action='store_true', help='use the default browser instead of an app window; Ctrl+C stops the client')
     parser.add_argument('--no-open', action='store_true', help='serve the client without opening a window; Ctrl+C stops it')
     parser.add_argument('--check', action='store_true', help='check the configured service without launching a window or changing conversations')
     args = parser.parse_args(argv)
@@ -300,9 +233,6 @@ def main(argv=None):
         if args.check:
             print('Kylin shared-memory service is reachable.')
             return 0
-        executable = None if args.no_open or args.browser else find_browser(config['browser'])
-        if not (args.no_open or args.browser or executable):
-            raise ValueError('Install a Chromium-family browser for an app window, or run with --browser.')
         server, profile = profile_server(config, args.config.parent)
         url = f'http://127.0.0.1:{server.server_port}/'
         print('Kylin client: ' + url, flush=True)
@@ -313,42 +243,27 @@ def main(argv=None):
         signal.signal(signal.SIGTERM, stop)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
-        process = None
         try:
-            if executable:
-                process = subprocess.Popen(browser_args(executable, profile, url), start_new_session=True)
-            elif args.browser:
-                webbrowser.open(url)
-            while not stopped.wait(0.5):
-                if process and process.poll() is not None:
-                    return process.returncode
+            if args.no_open:
+                while not stopped.wait(0.5):
+                    pass
+            else:
+                from .window import run_window
+                return run_window(url, profile, args.config, stopped)
         finally:
             server.shutdown()
             server.server_close()
-            # This process is our dedicated app profile, never the user's regular browser.
-            if process and process.poll() is None:
-                if os.name == 'posix':
-                    os.killpg(process.pid, signal.SIGTERM)
-                else:
-                    process.terminate()
-                try:
-                    process.wait(timeout=10)
-                except subprocess.TimeoutExpired:
-                    if os.name == 'posix':
-                        os.killpg(process.pid, signal.SIGKILL)
-                    else:
-                        process.kill()
-                    process.wait()
+
         return 0
     except (ValueError, OSError, json.JSONDecodeError) as exc:
         print('Kylin client: ' + str(exc), file=sys.stderr)
-        if not (args.no_open or args.check or args.browser):
+        if not (args.no_open or args.check):
             try:
-                from PyQt6.QtWidgets import QApplication, QMessageBox
-                app = QApplication.instance() or QApplication(sys.argv[:1])
-                QMessageBox.warning(None, 'Kylin connection', str(exc))
-            except ImportError:
+                from .window import show_error
+                show_error(str(exc))
+            except (ImportError, ValueError):
                 pass
+
         return 1
 
 

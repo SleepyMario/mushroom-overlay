@@ -1,0 +1,68 @@
+# Kylin Client
+
+An independently configured GTK desktop client for a central Kylin service.
+WebKitGTK renders the shared interface inside the application's own window.
+No external browser is launched for the Kylin interface. The server owns the
+model, cumulative conversations, notes and interface; this package contains none
+of that private data.
+
+## Gentoo
+
+Accept the live version with `=app-misc/kylin-client-9999 **` in
+`/etc/portage/package.accept_keywords`, then install `app-misc/kylin-client`.
+The default `gui` USE flag enables GTK 3, WebKitGTK 4.1 and PyGObject, the
+application window, connection dialog and desktop entry. There is no dependency
+on Brave, Chromium, Qt or QtWebEngine. With `-gui`, only headless proxy/check modes
+are available. Source lives in `src/kylin-client` in Mushroom itself.
+
+Run `kylin-client` or choose **Kylin** in the application menu. The first launch
+asks for the central Kylin gateway address. Use the window's settings button,
+the launcher's **Connection settings** action, or `kylin-client --configure`
+to change it later. Changes apply when the client is reopened. Closing the
+window stops this client, while the central service continues running.
+
+## Runtime configuration
+
+Linux: `$XDG_CONFIG_HOME/kylin-client/config.json`, normally
+`~/.config/kylin-client/config.json`. Created with owner-only Unix permissions.
+
+```json
+{
+  "service_url": "https://your-kylin-server.example",
+  "access_token": "",
+  "timeout": 600
+}
+```
+
+`--config PATH` selects another configuration. `--check` checks the service
+without modifying conversations. `--no-open` runs the client proxy without
+a graphical window; Ctrl+C stops it. Model weights/context are server settings.
+
+The optional bearer token stays in the client configuration and is forwarded
+only to the configured service, never embedded in the interface. Remote bearer
+authentication requires HTTPS with normal certificate verification. This supplies
+an existing server's authentication; it does not enable server authentication,
+remote access, or model hosting. Dedicated root URLs are supported; subpath
+hosting and WebSockets are not. The current Kylin interface uses HTTP/SSE.
+
+Each address/token combination gets a separate, stable loopback origin and
+persistent WebKit profile. Changing either retrieves that service's shared
+archive into a fresh cache, without uploading the previous connection's cache.
+Old profiles and unsent drafts are retained; wait for the memory indicator to
+show synced before switching. Downloads use a save dialog; same-service popup
+links open in another Kylin window, and user-clicked external links use the
+system's default application.
+
+The desktop shell currently targets Linux/GTK. The web interface stays platform
+independent and usable by future desktop/mobile clients. This package is not
+a native Windows, macOS, Android or iOS wrapper. The central service remains
+necessary for new replies and shared history.
+
+## Development
+
+```sh
+PYTHONPATH=src python3 -m unittest discover -s tests -v
+```
+
+MIT licensed. No model, user configuration, browser profile, conversation or
+local host path belongs in this source directory.
