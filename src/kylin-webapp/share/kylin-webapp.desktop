@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Kylin
+Comment=Connect to your shared Kylin conversations and notes
+Exec=kylin-webapp
+Icon=kylin-webapp
+Terminal=false
+Categories=Network;
+Actions=Configure;
+
+[Desktop Action Configure]
+Name=Connection settings
+Exec=kylin-webapp --configure
