@@ -11,7 +11,9 @@ Model weights, context size and other model administration stay on the service.
 
 ## Installation and configuration
 
-Gentoo: `emerge --ask app-misc/kylin-webapp` (live version `9999`).
+Gentoo: accept the live version with `=app-misc/kylin-webapp-9999 **` in
+`/etc/portage/package.accept_keywords`, then run
+`emerge --ask app-misc/kylin-webapp` (live version `9999`).
 The `gui` USE flag enables the first-run connection dialog and desktop entry.
 A Chromium-family browser (Chromium, Brave, Chrome or Edge) supplies the app
 window. Use an existing installed browser or install one separately. No second

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..15} )
-inherit desktop distutils-r1 git-r3
+inherit desktop distutils-r1 git-r3 xdg-utils
 
 DESCRIPTION="Configurable app-window client for a central Kylin service"
 HOMEPAGE="https://github.com/SleepyMario/mushroom-overlay/tree/main/src/kylin-webapp"
@@ -34,8 +34,19 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	if use gui; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 	elog "Run kylin-webapp to configure your central Kylin service."
 	elog "App windows use an existing Chromium-family browser (e.g. Brave or Chrome)."
 	elog "Alternatively use --browser for your default browser, or --no-open."
 	elog "Connection settings: kylin-webapp --configure. No model or archive is installed."
+}
+
+pkg_postrm() {
+	if use gui; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }
