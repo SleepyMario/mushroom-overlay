@@ -1,7 +1,27 @@
 """GTK application window using the system WebKitGTK engine."""
 import json
+from bisect import bisect_left, bisect_right
+import math
 from pathlib import Path
 from urllib.parse import urlsplit
+
+ZOOM_LEVELS = (50, 67, 80, 90, 100, 110, 125, 150, 175, 200, 250, 300, 400)
+
+
+def load_zoom(path):
+    try:
+        value = json.loads(path.read_text())['zoom_percent']
+        if type(value) not in (int, float) or not math.isfinite(value):
+            return 100
+        return max(ZOOM_LEVELS[0], min(ZOOM_LEVELS[-1], round(value)))
+    except (OSError, ValueError, KeyError, TypeError):
+        return 100
+
+
+def next_zoom(current, direction):
+    if direction > 0:
+        return ZOOM_LEVELS[min(bisect_right(ZOOM_LEVELS, current), len(ZOOM_LEVELS) - 1)]
+    return ZOOM_LEVELS[max(bisect_left(ZOOM_LEVELS, current) - 1, 0)]
 
 
 def local_navigation(uri, base):
@@ -80,6 +100,31 @@ def run_window(url, profile, config_path, stopped):
                                          base_cache_directory=str(storage / 'cache'))
     context = WebKit2.WebContext.new_with_website_data_manager(manager)
     windows = []
+    zoom_path = config_path.parent / 'ui.json'
+    zoom_percent = load_zoom(zoom_path)
+    zoom_widgets = {}
+
+    def refresh_zoom(view, smaller, reset, larger):
+        view.set_zoom_level(zoom_percent / 100)
+        reset.set_label(f'{zoom_percent}%')
+        reset.get_accessible().set_name(f'Zoom {zoom_percent} percent. Reset to 100 percent')
+        smaller.set_sensitive(zoom_percent > ZOOM_LEVELS[0])
+        larger.set_sensitive(zoom_percent < ZOOM_LEVELS[-1])
+
+    def change_zoom(percent):
+        nonlocal zoom_percent
+        from .client import write_json
+        zoom_percent = percent
+        for widgets in zoom_widgets.values():
+            refresh_zoom(*widgets)
+        try:
+            write_json(zoom_path, {'zoom_percent': zoom_percent})
+        except OSError as exc:
+            show_error(f'Zoom changed, but could not save it for next time: {exc}', app.get_active_window())
+
+    app.set_accels_for_action('win.zoom-in', ['<Primary>plus', '<Primary>equal', '<Primary>KP_Add'])
+    app.set_accels_for_action('win.zoom-out', ['<Primary>minus', '<Primary>KP_Subtract'])
+    app.set_accels_for_action('win.zoom-reset', ['<Primary>0', '<Primary>KP_0'])
 
     def policy(view, decision, kind):
         if kind in (WebKit2.PolicyDecisionType.NAVIGATION_ACTION, WebKit2.PolicyDecisionType.NEW_WINDOW_ACTION):
@@ -122,6 +167,31 @@ def run_window(url, profile, config_path, stopped):
         window.set_titlebar(header)
         view = WebKit2.WebView.new_with_related_view(related) if related else WebKit2.WebView.new_with_context(context)
         window.add(view)
+        zoom_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
+        smaller = Gtk.Button(label='−')
+        reset = Gtk.Button(label=f'{zoom_percent}%')
+        larger = Gtk.Button(label='+')
+        for button, name, tip, action_name in (
+            (smaller, 'Zoom out', 'Zoom out (Ctrl+−)', 'zoom-out'),
+            (reset, 'Reset zoom', 'Reset to 100% (Ctrl+0)', 'zoom-reset'),
+            (larger, 'Zoom in', 'Zoom in (Ctrl++ or Ctrl+=)', 'zoom-in'),
+        ):
+            button.set_size_request(48 if button is not reset else 76, 44)
+            button.get_accessible().set_name(name)
+            button.set_tooltip_text(tip)
+            button.set_action_name('win.' + action_name)
+            zoom_box.pack_start(button, False, False, 0)
+        for name, operation in (
+            ('zoom-in', lambda: change_zoom(next_zoom(zoom_percent, 1))),
+            ('zoom-out', lambda: change_zoom(next_zoom(zoom_percent, -1))),
+            ('zoom-reset', lambda: change_zoom(100)),
+        ):
+            action = Gio.SimpleAction.new(name, None)
+            action.connect('activate', lambda _action, _value, callback=operation: callback())
+            window.add_action(action)
+        header.pack_start(zoom_box)
+        zoom_widgets[window] = (view, smaller, reset, larger)
+        refresh_zoom(*zoom_widgets[window])
         reload_button = Gtk.Button.new_from_icon_name('view-refresh-symbolic', Gtk.IconSize.BUTTON)
         reload_button.set_tooltip_text('Reload interface')
         reload_button.connect('clicked', lambda _: view.reload())
@@ -137,6 +207,7 @@ def run_window(url, profile, config_path, stopped):
         window.connect('delete-event', lambda *_: (view.try_close(), True)[1])
         view.connect('close', lambda *_: window.destroy())
         window.connect('destroy', lambda *_: windows.remove(window))
+        window.connect('destroy', lambda *_: zoom_widgets.pop(window, None))
         view.connect('web-process-terminated', lambda *_: show_error('The web process stopped. Use Reload to reopen the interface; saved conversations remain on the service.', window))
         windows.append(window)
         window.show_all()

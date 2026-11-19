@@ -21,6 +21,18 @@ the launcher's **Connection settings** action, or `kylin-client --configure`
 to change it later. Changes apply when the client is reopened. Closing the
 window stops this client, while the central service continues running.
 
+## Zoom and readability
+
+The title bar has large **−**, **percentage**, and **+** buttons. Press **+** to
+make the entire interface larger, **−** to make it smaller, or the percentage
+button to reset to 100%. Supported zoom ranges from 50% to 400%.
+
+Keyboard shortcuts: **Ctrl++** or **Ctrl+=** to zoom in, **Ctrl+−** to zoom out,
+and **Ctrl+0** to reset. Numeric-keypad +/−/0 work too. All Kylin windows in the
+same client follow the selected zoom, including newly opened windows.
+The setting is saved automatically in `ui.json` next to `config.json`, so it
+survives application restarts and connection-setting edits.
+
 ## Runtime configuration
 
 Linux: `$XDG_CONFIG_HOME/kylin-client/config.json`, normally
