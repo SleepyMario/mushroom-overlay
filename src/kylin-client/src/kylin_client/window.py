@@ -4,6 +4,15 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
+def local_navigation(uri, base):
+    origin = urlsplit(base)
+    parts = urlsplit(uri)
+    if (parts.scheme, parts.netloc) == (origin.scheme, origin.netloc):
+        return True
+    # Archive/chat exports use a blob URL belonging to this local app origin.
+    return uri.startswith('blob:' + origin.scheme + '://' + origin.netloc + '/')
+
+
 def toolkit():
     try:
         import gi
@@ -70,18 +79,13 @@ def run_window(url, profile, config_path, stopped):
     manager = WebKit2.WebsiteDataManager(base_data_directory=str(storage / 'data'),
                                          base_cache_directory=str(storage / 'cache'))
     context = WebKit2.WebContext.new_with_website_data_manager(manager)
-    origin = urlsplit(url)
     windows = []
-
-    def same_origin(uri):
-        parts = urlsplit(uri)
-        return (parts.scheme, parts.netloc) == (origin.scheme, origin.netloc)
 
     def policy(view, decision, kind):
         if kind in (WebKit2.PolicyDecisionType.NAVIGATION_ACTION, WebKit2.PolicyDecisionType.NEW_WINDOW_ACTION):
             action = decision.get_navigation_action()
             uri = action.get_request().get_uri()
-            if uri != 'about:blank' and not same_origin(uri):
+            if uri != 'about:blank' and not local_navigation(uri, url):
                 decision.ignore()
                 if action.is_user_gesture() and urlsplit(uri).scheme in ('http', 'https', 'mailto'):
                     Gio.AppInfo.launch_default_for_uri(uri, None)

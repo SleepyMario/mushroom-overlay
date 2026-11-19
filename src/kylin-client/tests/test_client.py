@@ -127,6 +127,14 @@ class ClientTests(unittest.TestCase):
 
 
 class ConfigTests(unittest.TestCase):
+    def test_native_navigation_keeps_local_blob_exports(self):
+        from kylin_client.window import local_navigation
+        base='http://127.0.0.1:12345/'
+        self.assertTrue(local_navigation(base+'#/memory',base))
+        self.assertTrue(local_navigation('blob:'+base+'export-id',base))
+        self.assertFalse(local_navigation('blob:http://evil.example/export-id',base))
+        self.assertFalse(local_navigation('http://127.0.0.1:123456/evil',base))
+
     def test_normalize_service_url(self):
         self.assertEqual(client.service_url('https://EXAMPLE.com:443/'), 'https://example.com')
         self.assertEqual(client.service_url('http://[::1]:8095'), 'http://[::1]:8095')
