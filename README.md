@@ -13,7 +13,7 @@ The maintainer’s own projects are exempt and may package prereleases.
 
 - `app-benchmarks/vkmark` - extensible Vulkan benchmark suite
 - `app-crypt/openpgp-keys-sleepymario` - repository OpenPGP key
-- `app-misc/kylin-client` - WebKitGTK desktop client for a central Kylin service
+- `app-dev/kylin-client` - WebKitGTK desktop client for a central Kylin service
 - `app-misc/streamchat` - Kick, Twitch, and YouTube chat client with optional native GUI and relay server
 - `app-misc/weightrail` - local-first weight tracker
 - `app-misc/whacksmacker` - terminal review sessions for Anki through AnkiConnect

@@ -2,6 +2,7 @@ acct-group
 acct-user
 app-benchmarks
 app-crypt
+app-dev
 app-misc
 dev-python
 dev-utils

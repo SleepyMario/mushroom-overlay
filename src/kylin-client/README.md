@@ -8,8 +8,8 @@ of that private data.
 
 ## Gentoo
 
-Accept the live version with `=app-misc/kylin-client-9999 **` in
-`/etc/portage/package.accept_keywords`, then install `app-misc/kylin-client`.
+Accept the live version with `=app-dev/kylin-client-9999 **` in
+`/etc/portage/package.accept_keywords`, then install `app-dev/kylin-client`.
 The default `gui` USE flag enables GTK 3, WebKitGTK 4.1 and PyGObject, the
 application window, connection dialog and desktop entry. There is no dependency
 on Brave, Chromium, Qt or QtWebEngine. With `-gui`, only headless proxy/check modes
