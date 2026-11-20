@@ -78,3 +78,13 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 
 MIT licensed. No model, user configuration, browser profile, conversation or
 local host path belongs in this source directory.
+
+## Shared interface navigation
+
+The window provides Chat, Conversations, Files / web, and Write reviews shortcuts,
+plus Back, Forward and Reload. These load the current server pages in the same
+WebKit profile. Model modes, shared notes, coordinated discussions and access
+results therefore use the exact same service as a browser. Existing zoom,
+downloads, file chooser, popup and connection behavior are retained. Feature
+availability depends on the configured Core version; this does not add native
+mobile support or browser-specific extensions.

@@ -196,6 +196,25 @@ def run_window(url, profile, config_path, stopped):
         reload_button.set_tooltip_text('Reload interface')
         reload_button.connect('clicked', lambda _: view.reload())
         header.pack_start(reload_button)
+        # All feature pages come from the same configured Core and shared archive.
+        for label, target in (('Chat', '/'), ('Conversations', '/kylin/conversations'),
+                              ('Files / web', '/kylin/access'), ('Write reviews', '/kylin/write-reviews')):
+            button = Gtk.Button(label=label)
+            button.set_tooltip_text('Open ' + label.lower() + ' in this window')
+            button.connect('clicked', lambda _, path=target: view.load_uri(url.rstrip('/') + path))
+            header.pack_end(button)
+        back = Gtk.Button.new_from_icon_name('go-previous-symbolic', Gtk.IconSize.BUTTON)
+        forward = Gtk.Button.new_from_icon_name('go-next-symbolic', Gtk.IconSize.BUTTON)
+        back.set_tooltip_text('Back'); forward.set_tooltip_text('Forward')
+        back.connect('clicked', lambda _: view.go_back())
+        forward.connect('clicked', lambda _: view.go_forward())
+        def navigation_state(*_):
+            back.set_sensitive(view.can_go_back())
+            forward.set_sensitive(view.can_go_forward())
+        view.connect('notify::uri', navigation_state)
+        view.connect('load-changed', navigation_state)
+        navigation_state()
+        header.pack_start(back); header.pack_start(forward)
         settings_button = Gtk.Button.new_from_icon_name('emblem-system-symbolic', Gtk.IconSize.BUTTON)
         settings_button.set_tooltip_text('Connection settings')
         settings_button.connect('clicked', lambda _: configure(config_path, window))
