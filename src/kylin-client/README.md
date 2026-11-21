@@ -88,3 +88,21 @@ results therefore use the exact same service as a browser. Existing zoom,
 downloads, file chooser, popup and connection behavior are retained. Feature
 availability depends on the configured Core version; this does not add native
 mobile support or browser-specific extensions.
+
+## Colour schemes
+
+The title-bar **Colour scheme** picker changes the interface immediately without
+reloading the page or clearing a draft. KylinChat's green palette is the default.
+ChatGPT-style Light/Dark, the installed desktop app's named palette families
+(including both Solarized variants), and additional Midnight Blue, Warm Paper,
+Lavender, Forest and High Contrast schemes are included. The selected theme and
+zoom are stored together in the local `ui.json`; one setting never erases the other.
+New windows use the same selection. No service, conversation, model or website
+configuration changes when choosing a theme.
+
+The named app palettes reuse their background, text and accent colour values;
+Kylin's panels, controls and native header map those colours onto its own layout.
+This is a palette match, not a copy of the other application's code, artwork or
+window effects. Some original palettes have softer contrast; High Contrast is
+available for stronger legibility. Theme changes affect Kylin's main interface
+and standalone utility pages, not external websites opened in a browser.

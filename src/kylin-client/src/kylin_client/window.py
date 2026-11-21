@@ -4,6 +4,7 @@ from bisect import bisect_left, bisect_right
 import math
 from pathlib import Path
 from urllib.parse import urlsplit
+from .themes import THEMES, load_theme, save_ui, web_css, gtk_css
 
 ZOOM_LEVELS = (50, 67, 80, 90, 100, 110, 125, 150, 175, 200, 250, 300, 400)
 
@@ -103,6 +104,11 @@ def run_window(url, profile, config_path, stopped):
     zoom_path = config_path.parent / 'ui.json'
     zoom_percent = load_zoom(zoom_path)
     zoom_widgets = {}
+    theme_name = load_theme(zoom_path)
+    theme_widgets = {}
+    theme_styles = {}
+    shell_style = Gtk.CssProvider()
+    shell_style.load_from_data(gtk_css(theme_name).encode())
 
     def refresh_zoom(view, smaller, reset, larger):
         view.set_zoom_level(zoom_percent / 100)
@@ -118,9 +124,37 @@ def run_window(url, profile, config_path, stopped):
         for widgets in zoom_widgets.values():
             refresh_zoom(*widgets)
         try:
-            write_json(zoom_path, {'zoom_percent': zoom_percent})
+            save_ui(zoom_path, zoom_percent=zoom_percent)
         except OSError as exc:
             show_error(f'Zoom changed, but could not save it for next time: {exc}', app.get_active_window())
+
+    def apply_theme(view):
+        manager = view.get_user_content_manager()
+        previous = theme_styles.get(manager)
+        if previous is not None:
+            manager.remove_style_sheet(previous)
+        # This WebView is confined to the configured service by policy();
+        # WebKit match-pattern allowlists do not reliably match loopback ports.
+        sheet = WebKit2.UserStyleSheet.new(web_css(theme_name),
+            WebKit2.UserContentInjectedFrames.TOP_FRAME,
+            WebKit2.UserStyleLevel.USER, None, None)
+        manager.add_style_sheet(sheet)
+        theme_styles[manager] = sheet
+
+    def change_theme(selector):
+        nonlocal theme_name
+        selected = selector.get_active_id()
+        if selected not in THEMES or selected == theme_name:
+            return
+        theme_name = selected
+        shell_style.load_from_data(gtk_css(theme_name).encode())
+        for view, picker in theme_widgets.values():
+            picker.set_active_id(theme_name)
+            apply_theme(view)
+        try:
+            save_ui(zoom_path, theme=theme_name)
+        except OSError as exc:
+            show_error(f'Theme changed, but could not save it for next time: {exc}', app.get_active_window())
 
     app.set_accels_for_action('win.zoom-in', ['<Primary>plus', '<Primary>equal', '<Primary>KP_Add'])
     app.set_accels_for_action('win.zoom-out', ['<Primary>minus', '<Primary>KP_Subtract'])
@@ -165,8 +199,20 @@ def run_window(url, profile, config_path, stopped):
         window.set_icon_name('kylin-client')
         header = Gtk.HeaderBar(title='Kylin', show_close_button=True)
         window.set_titlebar(header)
+        header.get_style_context().add_class('kylin-client-header')
+        Gtk.StyleContext.add_provider_for_screen(window.get_screen(), shell_style, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
         view = WebKit2.WebView.new_with_related_view(related) if related else WebKit2.WebView.new_with_context(context)
         window.add(view)
+        apply_theme(view)
+        theme_picker = Gtk.ComboBoxText()
+        for key, palette in THEMES.items():
+            theme_picker.append(key, palette[0])
+        theme_picker.set_active_id(theme_name)
+        theme_picker.set_tooltip_text('Colour scheme — saved on this device')
+        theme_picker.get_accessible().set_name('Colour scheme')
+        theme_picker.connect('changed', change_theme)
+        header.pack_start(theme_picker)
+        theme_widgets[window] = (view, theme_picker)
         zoom_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
         smaller = Gtk.Button(label='−')
         reset = Gtk.Button(label=f'{zoom_percent}%')
@@ -227,6 +273,7 @@ def run_window(url, profile, config_path, stopped):
         view.connect('close', lambda *_: window.destroy())
         window.connect('destroy', lambda *_: windows.remove(window))
         window.connect('destroy', lambda *_: zoom_widgets.pop(window, None))
+        window.connect('destroy', lambda *_: theme_widgets.pop(window, None))
         view.connect('web-process-terminated', lambda *_: show_error('The web process stopped. Use Reload to reopen the interface; saved conversations remain on the service.', window))
         windows.append(window)
         window.show_all()
