@@ -246,6 +246,9 @@ def run_window(url, profile, config_path, stopped):
         for label, target in (('Chat', '/'), ('Conversations', '/kylin/conversations'),
                               ('Files / web', '/kylin/access'), ('Write reviews', '/kylin/write-reviews')):
             button = Gtk.Button(label=label)
+            if label == 'Conversations':
+                button.get_child().set_markup('Conversations <sub><small>beta</small></sub>')
+                button.get_accessible().set_name('Conversations (beta)')
             button.set_tooltip_text('Open ' + label.lower() + ' in this window')
             button.connect('clicked', lambda _, path=target: view.load_uri(url.rstrip('/') + path))
             header.pack_end(button)
