@@ -206,7 +206,7 @@ def run_window(url, profile, config_path, stopped):
         layout.pack_start(view, True, True, 0)
         footer = Gtk.Box()
         footer.get_style_context().add_class('kylin-client-footer')
-        credit = Gtk.Label(label='@Taiwan Numba One 1997-2030')
+        credit = Gtk.Label(label="In remembrance of 'Taiwan Numba One', 1997-2030")
         credit.set_margin_start(10)
         credit.set_margin_end(10)
         credit.set_margin_top(3)
