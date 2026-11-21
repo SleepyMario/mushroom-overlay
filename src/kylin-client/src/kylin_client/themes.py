@@ -143,4 +143,6 @@ def gtk_css(name):
 .kylin-client-header button:hover {{ background-image: none; background-color: {accent}; color: {accent_fg}; }}
 .kylin-client-header button:disabled {{ color: {muted}; }}
 .kylin-client-header label {{ color: inherit; text-shadow: none; }}
+.kylin-client-footer {{ background-color: {bg}; color: {fg}; }}
+.kylin-client-footer label {{ color: inherit; font-size: 0.85em; }}
 '''
