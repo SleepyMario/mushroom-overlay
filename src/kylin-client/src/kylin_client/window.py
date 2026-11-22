@@ -73,17 +73,18 @@ def configure(path, parent=None):
     url = Gtk.Entry(text=old.get('service_url', ''), hexpand=True)
     url.set_placeholder_text('https://your-kylin-server.example')
     token = Gtk.Entry(text=old.get('access_token', ''), visibility=False)
+    pass_entry = Gtk.Entry(text=old.get('access_token_pass_entry', ''))
     timeout = Gtk.SpinButton.new_with_range(1, 3600, 1)
     timeout.set_value(old.get('timeout', 600))
-    for row, (label, field) in enumerate((('Service address', url), ('Access token (optional)', token), ('Request timeout (seconds)', timeout))):
+    for row, (label, field) in enumerate((('Service address', url), ('Access token (optional)', token), ('pass entry (instead of token)', pass_entry), ('Request timeout (seconds)', timeout))):
         grid.attach(Gtk.Label(label=label, xalign=0), 0, row, 1, 1)
         grid.attach(field, 1, row, 1, 1)
-    grid.attach(Gtk.Label(label='Changes take effect when you next start the client.', xalign=0), 0, 3, 2, 1)
+    grid.attach(Gtk.Label(label='Changes take effect when you next start the client.', xalign=0), 0, 4, 2, 1)
     dialog.show_all()
     try:
         while dialog.run() == Gtk.ResponseType.OK:
             try:
-                config = validate_config(dict(service_url=url.get_text(), access_token=token.get_text(), timeout=timeout.get_value_as_int()))
+                config = validate_config(dict(service_url=url.get_text(), access_token=token.get_text(), access_token_pass_entry=pass_entry.get_text(), profile_id=old.get('profile_id', '') if url.get_text().rstrip('/') == old.get('service_url', '').rstrip('/') else '', timeout=timeout.get_value_as_int()))
                 write_json(path, config)
                 return True
             except (ValueError, OSError) as exc:

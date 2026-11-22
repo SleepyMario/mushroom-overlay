@@ -106,3 +106,18 @@ This is a palette match, not a copy of the other application's code, artwork or
 window effects. Some original palettes have softer contrast; High Contrast is
 available for stronger legibility. Theme changes affect Kylin's main interface
 and standalone utility pages, not external websites opened in a browser.
+
+### Reading a token from pass
+
+Install `pass` and set `access_token_pass_entry` to an existing entry, such as
+`kylin/api-token`, with `access_token` empty. The client runs `pass show` directly
+at startup, uses only the first line, and keeps the resolved token in memory.
+Unlock failures stop startup; credentials are never silently omitted. Sending
+a token over non-loopback HTTP is refused. The connection dialog supports the
+entry name; it never displays the resolved secret.
+
+When migrating an existing connection, retain its current 64-character profile
+directory name in `profile_id`. This keeps its local origin, browser records,
+and settings unchanged. Do not reuse a profile across different servers.
+Without an explicit profile, pass connections use the service URL and entry name
+as their stable identity, so rotating the token does not create a new profile.

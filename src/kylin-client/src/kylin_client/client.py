@@ -6,6 +6,8 @@ import json
 import os
 from pathlib import Path
 import signal
+import subprocess
+import re
 import ssl
 import sys
 import tempfile
@@ -53,7 +55,15 @@ def validate_config(raw):
     token = raw.get('access_token', '')
     if not isinstance(token, str) or any(ord(c) < 32 or ord(c) > 126 for c in token):
         raise ValueError('The access token must contain printable ASCII only.')
-    if token and urlsplit(url).scheme == 'http' and urlsplit(url).hostname not in ('localhost', '127.0.0.1', '::1'):
+    entry = raw.get('access_token_pass_entry', '')
+    if not isinstance(entry, str) or (entry and (entry.startswith('-') or not re.fullmatch(r'[A-Za-z0-9_./-]+', entry) or any(x in ('', '.', '..') for x in entry.split('/')))):
+        raise ValueError('Invalid pass entry name.')
+    if entry and token:
+        raise ValueError('Choose either a pass entry or an inline access token.')
+    profile = raw.get('profile_id', '')
+    if not isinstance(profile, str) or (profile and not re.fullmatch(r'[0-9a-f]{64}', profile)):
+        raise ValueError('Invalid existing profile identifier.')
+    if (token or entry) and urlsplit(url).scheme == 'http' and urlsplit(url).hostname not in ('localhost', '127.0.0.1', '::1'):
         raise ValueError('Use HTTPS when sending an access token to a remote service.')
     try:
         timeout = int(raw.get('timeout', 600))
@@ -61,7 +71,31 @@ def validate_config(raw):
         raise ValueError('Request timeout must be a number of seconds.') from None
     if not 1 <= timeout <= 3600:
         raise ValueError('Request timeout must be between 1 and 3600 seconds.')
-    return dict(service_url=url, access_token=token, timeout=timeout)
+    result = dict(service_url=url, access_token=token, timeout=timeout)
+    if entry: result['access_token_pass_entry'] = entry
+    if profile: result['profile_id'] = profile
+    return result
+
+
+def resolve_credentials(config):
+    """Return runtime-only credentials. Never persist this result."""
+    config = validate_config(config)
+    entry = config.get('access_token_pass_entry')
+    if not entry:
+        return config
+    try:
+        result = subprocess.run(['pass', 'show', entry], capture_output=True,
+                                timeout=120, check=True)
+        token = result.stdout.decode('utf-8').splitlines()[0]
+    except (OSError, subprocess.SubprocessError, UnicodeError, IndexError):
+        raise ValueError('Cannot unlock the Kylin token from pass. Unlock your password store and try again.') from None
+    if not token or any(ord(c) < 33 or ord(c) > 126 for c in token):
+        raise ValueError('The pass entry does not contain a valid access token.')
+    # Use the reference, not the resolved secret, as the default profile identity.
+    config.setdefault('profile_id', hashlib.sha256((config['service_url'] + '\0pass:' + entry).encode()).hexdigest())
+    config.pop('access_token_pass_entry')
+    config['access_token'] = token
+    return config
 
 
 def write_json(path, value):
@@ -176,7 +210,7 @@ def make_server(config, port=0):
 
 def profile_server(config, directory):
     # Distinct stable local origins AND browser profiles prevent cross-server cache imports.
-    key = hashlib.sha256((config['service_url'] + '\0' + config['access_token']).encode()).hexdigest()
+    key = config.get('profile_id') or hashlib.sha256((config['service_url'] + '\0' + config['access_token']).encode()).hexdigest()
     profiles = directory / 'profiles'
     path = profiles / key
     state = path / 'connection.json'
@@ -228,7 +262,7 @@ def main(argv=None):
                 return 0
             if args.configure:
                 return 0
-        config = validate_config(json.loads(args.config.read_text()))
+        config = resolve_credentials(json.loads(args.config.read_text()))
         check_service(config)
         if args.check:
             print('Kylin shared-memory service is reachable.')
