@@ -26,6 +26,10 @@ def next_zoom(current, direction):
 
 
 def local_navigation(uri, base):
+    # Opaque sandboxed srcdoc frames are used by the JavaScript tool.
+    # This does not grant a remote origin or weaken the iframe sandbox.
+    if uri == "about:srcdoc":
+        return True
     origin = urlsplit(base)
     parts = urlsplit(uri)
     if (parts.scheme, parts.netloc) == (origin.scheme, origin.netloc):
