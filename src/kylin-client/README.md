@@ -121,3 +121,19 @@ directory name in `profile_id`. This keeps its local origin, browser records,
 and settings unchanged. Do not reuse a profile across different servers.
 Without an explicit profile, pass connections use the service URL and entry name
 as their stable identity, so rotating the token does not create a new profile.
+
+## Optional LAN-first SSH connection
+
+`kylin-client-tunnel` keeps the same localhost service URL and profile. Configure
+`tunnel.json` in the client configuration directory with `ssh_host`,
+`host_key_alias`, `lan_host`, and `wireguard_host`. Optional settings are
+`ssh_config` (default `~/.ssh/config`), `local_port`, and `remote_port` (8095).
+Use your existing trusted SSH identity and known-hosts configuration. Endpoint
+addresses and credentials are local settings and are not distributed.
+
+Each connection attempt authenticates LAN first, then WireGuard, with strict
+host-key verification for the same server identity. An established connection
+is retained until it disconnects; reconnecting starts at LAN again. Requests
+are never replayed. `--check` checks route selection without opening a tunnel.
+Run the helper under a user service with Restart=always for persistent use.
+This helper uses an existing WireGuard route; it does not configure the VPN.

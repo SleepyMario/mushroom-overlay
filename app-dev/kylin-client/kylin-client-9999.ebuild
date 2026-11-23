@@ -17,7 +17,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="+gui"
 
-RDEPEND="gui? (
+RDEPEND="net-misc/openssh
+	gui? (
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	>=net-libs/webkit-gtk-2.44:4.1[introspection]

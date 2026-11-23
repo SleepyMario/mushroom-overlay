@@ -11,6 +11,7 @@ license = "MIT"
 
 [project.scripts]
 kylin-client = "kylin_client.client:main"
+kylin-client-tunnel = "kylin_client.tunnel:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
