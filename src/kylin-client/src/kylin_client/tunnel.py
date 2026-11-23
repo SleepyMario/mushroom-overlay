@@ -66,10 +66,10 @@ def maintain(cfg, stopped, spawn=subprocess.Popen):
     while not stopped.is_set():
         route = select_route(cfg, stopped=stopped)
         if route is None:
-            print('Kylin tunnel: neither route is available; retrying.', flush=True)
+            print('Qylyn tunnel: neither route is available; retrying.', flush=True)
             stopped.wait(3)
             continue
-        print('Kylin tunnel: connecting via ' + route + '.', flush=True)
+        print('Qylyn tunnel: connecting via ' + route + '.', flush=True)
         child = spawn(command(cfg, route), stdin=subprocess.DEVNULL)
         try:
             # Keep an established connection, including in-flight requests.
@@ -97,7 +97,7 @@ def main(argv=None):
         cfg = validate_config(json.loads(args.config.read_text()))
         if args.check:
             route = select_route(cfg)
-            print('Kylin tunnel: ' + (route or 'no route available'))
+            print('Qylyn tunnel: ' + (route or 'no route available'))
             return 0 if route else 1
         stopped = threading.Event()
         for sig in (signal.SIGTERM, signal.SIGINT):
@@ -105,7 +105,7 @@ def main(argv=None):
         maintain(cfg, stopped)
         return 0
     except (OSError, ValueError) as exc:
-        print('Kylin tunnel: ' + str(exc))
+        print('Qylyn tunnel: ' + str(exc))
         return 1
 
 

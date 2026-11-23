@@ -55,7 +55,7 @@ def show_error(message, parent=None):
     Gtk, _, _, _ = toolkit()
     dialog = Gtk.MessageDialog(transient_for=parent, modal=True,
                                message_type=Gtk.MessageType.ERROR,
-                               buttons=Gtk.ButtonsType.CLOSE, text='Kylin connection')
+                               buttons=Gtk.ButtonsType.CLOSE, text='Qylyn connection')
     dialog.format_secondary_text(message)
     dialog.run()
     dialog.destroy()
@@ -65,7 +65,7 @@ def configure(path, parent=None):
     from .client import validate_config, write_json
     Gtk, _, _, _ = toolkit()
     old = json.loads(path.read_text()) if path.exists() else {}
-    dialog = Gtk.Dialog(title='Kylin connection', transient_for=parent, modal=True)
+    dialog = Gtk.Dialog(title='Qylyn connection', transient_for=parent, modal=True)
     dialog.add_buttons('_Cancel', Gtk.ResponseType.CANCEL, '_Save', Gtk.ResponseType.OK)
     dialog.set_default_size(530, -1)
     grid = Gtk.Grid(column_spacing=16, row_spacing=12, margin=18)
@@ -97,7 +97,7 @@ def configure(path, parent=None):
 def run_window(url, profile, config_path, stopped):
     Gtk, WebKit2, GLib, Gio = toolkit()
     GLib.set_prgname('kylin-client')
-    GLib.set_application_name('Kylin')
+    GLib.set_application_name('Qylyn')
     app = Gtk.Application(application_id='com.sleepymario.KylinClient',
                           flags=Gio.ApplicationFlags.NON_UNIQUE)
     storage = profile / 'webkit'
@@ -199,10 +199,10 @@ def run_window(url, profile, config_path, stopped):
     context.connect('download-started', download_started)
 
     def make_window(related=None):
-        window = Gtk.ApplicationWindow(application=app, title='Kylin')
+        window = Gtk.ApplicationWindow(application=app, title='Qylyn')
         window.set_default_size(1200, 850)
         window.set_icon_name('kylin-client')
-        header = Gtk.HeaderBar(title='Kylin', show_close_button=True)
+        header = Gtk.HeaderBar(title='Qylyn', show_close_button=True)
         window.set_titlebar(header)
         header.get_style_context().add_class('kylin-client-header')
         Gtk.StyleContext.add_provider_for_screen(window.get_screen(), shell_style, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
@@ -284,7 +284,7 @@ def run_window(url, profile, config_path, stopped):
         settings_button.set_tooltip_text('Connection settings')
         settings_button.connect('clicked', lambda _: configure(config_path, window))
         header.pack_end(settings_button)
-        view.connect('notify::title', lambda v, _: header.set_title(v.get_title() or 'Kylin'))
+        view.connect('notify::title', lambda v, _: header.set_title(v.get_title() or 'Qylyn'))
         view.connect('decide-policy', policy)
         view.connect('create', lambda v, _: make_window(v))
         # Honour the page's beforeunload prompt (for example an unsaved note).

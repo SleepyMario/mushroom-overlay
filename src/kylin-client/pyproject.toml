@@ -5,11 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "kylin-client"
 version = "0.1.0"
-description = "Configurable desktop client for a central Kylin service"
+description = "Configurable desktop client for a central Qylyn service"
 requires-python = ">=3.11"
 license = "MIT"
 
+[project.urls]
+Homepage = "https://www.qylyn.com"
+
 [project.scripts]
+qylyn-client = "kylin_client.client:main"
+qylyn-client-tunnel = "kylin_client.tunnel:main"
 kylin-client = "kylin_client.client:main"
 kylin-client-tunnel = "kylin_client.tunnel:main"
 

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Kylin
-Comment=Connect to your shared Kylin conversations and notes
-Exec=kylin-client
+Name=Qylyn (麒麟)
+Comment=Connect to your shared Qylyn conversations and notes
+Exec=qylyn-client
 Icon=kylin-client
 Terminal=false
 StartupWMClass=kylin-client
@@ -11,4 +11,4 @@ Actions=Configure;
 
 [Desktop Action Configure]
 Name=Connection settings
-Exec=kylin-client --configure
+Exec=qylyn-client --configure

@@ -1,1 +1,1 @@
-"""An independently configured client; the Kylin service owns all shared state."""
+"""An independently configured client; the Qylyn service owns all shared state."""

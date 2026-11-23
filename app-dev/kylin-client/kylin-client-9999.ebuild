@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..15} )
 inherit desktop distutils-r1 git-r3 xdg-utils
 
-DESCRIPTION="WebKitGTK desktop client for a central Kylin service"
+DESCRIPTION="WebKitGTK desktop client for a central Qylyn service"
 HOMEPAGE="https://github.com/SleepyMario/mushroom-overlay/tree/main/src/kylin-client"
 EGIT_REPO_URI="https://github.com/SleepyMario/mushroom-overlay.git"
 EGIT_BRANCH="main"
@@ -43,10 +43,10 @@ pkg_postinst() {
 		xdg_icon_cache_update
 		xdg_desktop_database_update
 	fi
-	elog "Run kylin-client to configure your central Kylin service."
+	elog "Run qylyn-client to configure your central Qylyn service."
 	elog "The application window uses the system WebKitGTK engine."
 	elog "Use --no-open to run just the local client proxy."
-	elog "Connection settings: kylin-client --configure. No model or archive is installed."
+	elog "Connection settings: qylyn-client --configure. No model or archive is installed."
 }
 
 pkg_postrm() {

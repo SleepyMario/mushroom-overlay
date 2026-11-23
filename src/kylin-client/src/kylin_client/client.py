@@ -34,7 +34,7 @@ def service_url(value):
     value = value.strip()
     parts = urlsplit(value)
     if parts.scheme not in ('http', 'https') or not parts.hostname:
-        raise ValueError('Enter a complete http:// or https:// Kylin service address.')
+        raise ValueError('Enter a complete http:// or https:// Qylyn service address.')
     if parts.username or parts.password or parts.query or parts.fragment or parts.path not in ('', '/'):
         raise ValueError('Use the service root address, without credentials, a path, query or fragment.')
     if any(ord(c) < 33 for c in value) or '\\' in value:
@@ -88,7 +88,7 @@ def resolve_credentials(config):
                                 timeout=120, check=True)
         token = result.stdout.decode('utf-8').splitlines()[0]
     except (OSError, subprocess.SubprocessError, UnicodeError, IndexError):
-        raise ValueError('Cannot unlock the Kylin token from pass. Unlock your password store and try again.') from None
+        raise ValueError('Cannot unlock the Qylyn token from pass. Unlock your password store and try again.') from None
     if not token or any(ord(c) < 33 or ord(c) > 126 for c in token):
         raise ValueError('The pass entry does not contain a valid access token.')
     # Use the reference, not the resolved secret, as the default profile identity.
@@ -194,7 +194,7 @@ class Handler(BaseHTTPRequestHandler):
                     self.wfile.flush()  # Preserve streaming tokens, including partial replies.
         except (OSError, http.client.HTTPException):
             if not started:
-                self.fail(502, 'Kylin service unavailable. Check that it is running and the connection settings are correct.')
+                self.fail(502, 'Qylyn service unavailable. Check that it is running and the connection settings are correct.')
         finally:
             conn.close()
 
@@ -240,11 +240,11 @@ def check_service(config):
         response = conn.getresponse()
         data = response.read(256 * 1024)
         if response.status != 200:
-            raise ValueError(f'Kylin connection check returned HTTP {response.status}. Check the service address and authentication.')
+            raise ValueError(f'Qylyn connection check returned HTTP {response.status}. Check the service address and authentication.')
         if b'KylinSync' not in data or b'/kylin/api/sync' not in data:
-            raise ValueError('This address is not a compatible Kylin shared-memory service.')
+            raise ValueError('This address is not a compatible Qylyn shared-memory service.')
     except (OSError, http.client.HTTPException):
-        raise ValueError('Cannot reach Kylin. Start the central service or update the connection settings.') from None
+        raise ValueError('Cannot reach Qylyn. Start the central service or update the connection settings.') from None
     finally:
         conn.close()
 
@@ -265,11 +265,11 @@ def main(argv=None):
         config = resolve_credentials(json.loads(args.config.read_text()))
         check_service(config)
         if args.check:
-            print('Kylin shared-memory service is reachable.')
+            print('Qylyn shared-memory service is reachable.')
             return 0
         server, profile = profile_server(config, args.config.parent)
         url = f'http://127.0.0.1:{server.server_port}/'
-        print('Kylin client: ' + url, flush=True)
+        print('Qylyn client: ' + url, flush=True)
         stopped = threading.Event()
         def stop(*_):
             stopped.set()
@@ -290,7 +290,7 @@ def main(argv=None):
 
         return 0
     except (ValueError, OSError, json.JSONDecodeError) as exc:
-        print('Kylin client: ' + str(exc), file=sys.stderr)
+        print('Qylyn client: ' + str(exc), file=sys.stderr)
         if not (args.no_open or args.check):
             try:
                 from .window import show_error

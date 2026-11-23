@@ -4,7 +4,7 @@ import json
 DEFAULT_THEME = 'kylinchat'
 # label, dark, page, text, surface, muted text, accent, accent text, border
 THEMES = {
-    'kylinchat': ('KylinChat', True, '#142124', '#e9f0ec', '#203331', '#afc4bb', '#b9dfb3', '#142124', '#78958a'),
+    'kylinchat': ('Qylyn', True, '#142124', '#e9f0ec', '#203331', '#afc4bb', '#b9dfb3', '#142124', '#78958a'),
     'chatgpt-light': ('ChatGPT Light', False, '#ffffff', '#202123', '#f4f4f4', '#626262', '#202123', '#ffffff', '#b8b8b8'),
     'chatgpt-dark': ('ChatGPT Dark', True, '#212121', '#ececec', '#303030', '#b4b4b4', '#ececec', '#212121', '#747474'),
     'midnight': ('Midnight Blue', True, '#111827', '#edf3ff', '#1e293b', '#b5c6df', '#93c5fd', '#112238', '#647b9a'),
@@ -119,7 +119,7 @@ def web_css(name):
         'destructive': '#ff9090' if dark else '#b42318',
     }
     declarations = ';'.join('--'+key+':'+value+' !important' for key,value in variables.items())
-    return f'''/* Kylin Client theme: {name} */
+    return f'''/* Qylyn Client theme: {name} */
 :root, :root.dark, :root.light {{ {declarations}; color-scheme: {'dark' if dark else 'light'} !important; }}
 html, body {{ background-color: {bg} !important; color: {fg} !important; }}
 ::selection {{ background-color: {accent} !important; color: {accent_fg} !important; }}

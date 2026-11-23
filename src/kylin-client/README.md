@@ -1,4 +1,8 @@
-# Kylin Client
+# Qylyn (麒麟) Client
+
+Official website: https://www.qylyn.com. Kylin is the former name of the same project. Use `qylyn-client` and `qylyn-client-tunnel`; the old commands remain compatible. Existing configuration, credentials, cache, theme IDs and desktop application ID are retained so this update does not reset settings or create a second profile. The Python distribution/module and source directory retain compatibility names.
+
+# Client reference
 
 An independently configured GTK desktop client for a central Kylin service.
 WebKitGTK renders the shared interface inside the application's own window.
